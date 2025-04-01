@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* Sidebar styling */
+  .sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    padding-left: 0px;
+    transition: all 0.3s ease;
+    z-index: 1000; /* Keep sidebar below header */
+  }
+
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+
+  .side-nav {
+    margin-top: 40px;
+  }
+
+  /* Main content area */
+  .content {
+    margin-left: 150px; /* Create space for the sidebar */
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+    margin-top: 0px; /* Adjust for the height of the header */
+    flex-grow: 1;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    margin-bottom: 15px;
+  }
+</style>
+{% endblock %} {% block content %}
+<!-- Sidebar -->
+<div class="sidebar">
+  <!-- <h3 class="text-center text-white">Navigation</h3> -->
+  <a href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+  <a href="/claim-tracker"
+    ><i class="fa-solid fa-clipboard-check"></i> Claim Tracker</a
+  >
+  <a href="/claim-form"
+    ><i class="fa-solid fa-file-circle-plus"></i> Submit Claim</a
+  >
+  <a href="./profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="container">
+    <div class="header">
+      <h2>Submit a Claim</h2>
+    </div>
+    <form action="#" method="POST">
+      <div class="mb-3">
+        <label for="petName" class="form-label">Pet Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="petName"
+          name="petName"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="reason" class="form-label">Reason for Claim</label>
+        <select class="form-control" id="reason" name="reason" required>
+          <option value="Vaccination">Vaccination</option>
+          <option value="Nail Clipping">Nail Clipping</option>
+          <option value="Grooming">Grooming</option>
+          <option value="Emergency">Emergency</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="claimAmount" class="form-label">Claim Amount</label>
+        <input
+          type="number"
+          class="form-control"
+          id="claimAmount"
+          name="claimAmount"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="claimDate" class="form-label">Claim Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="claimDate"
+          name="claimDate"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Submit Claim</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -48,3 +48,18 @@ def create_owner():
     except Exception as e:
         db.session.rollback()
         return {"message": str(e)}, 500
+
+
+@main_bp.get("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
+
+@main_bp.get("/claim-form")
+def add_claim():
+    return render_template("claim-form.html")
+
+
+@main_bp.get("/claim-tracker")
+def claim_tracker():
+    return render_template("claim-tracker.html")
