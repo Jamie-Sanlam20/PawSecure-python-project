@@ -14,7 +14,9 @@
 
     <style>
       body {
-        font-family: Roboto, sans-serif;
+        font-family: sans-serif;
+        background-color: rgba(229, 122, 68, 0.35);
+        padding: 20px;
       }
 
       .nav-link-container {
@@ -36,16 +38,19 @@
     {% block head_content %} {% endblock %}
   </head>
   <body>
-    <header>
-      <nav>
-        <ul class="nav-link-container">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/movie-list">Movies</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="header">
+      <img class="company-logo" src="./images/company-logo.jpg" />
+      <header>
+        <nav>
+          <ul class="nav-link-container">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">Partners</a></li>
+            <li><a href="/profile">Contact</a></li>
+            <li><a href="./login.html">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
 
     {% block content %} {% endblock %}
     <script
