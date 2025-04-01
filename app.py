@@ -4,6 +4,7 @@ from sqlalchemy.sql import text
 from config import Config
 from extensions import db
 from models.pet import Pet
+from routes.main_bp import main_bp
 from routes.pet_input_bp import pet_input_bp
 
 
@@ -23,6 +24,7 @@ def create_app():
 
     # Flask - Blueprints
     app.register_blueprint(pet_input_bp)
+    app.register_blueprint(main_bp)
 
     return app
 
