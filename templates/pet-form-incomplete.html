@@ -23,6 +23,7 @@
   .page-content {
     display: flex;
     justify-content: space-between;
+    margin-top: 8px;
   }
 
   .page-summary {
@@ -107,11 +108,16 @@
     method="POST"
     class="form-container"
   >
+    <input
+      type="hidden"
+      name="owner_id"
+      value="{{ request.args.get('owner_id')}}"
+    />
     <h2>Let’s find the best insurance to Secure your Furry family’s future</h2>
 
     <div class="form-element-block">
       <label for="pet-type">
-        <input type="radio" name="pet-type" value="dog" />
+        <input type="radio" name="pet-type" value="dog" r />
         <i class="fa-solid fa-dog"></i> Dog
       </label>
       <label for="pet-type">
@@ -168,13 +174,13 @@
     </div>
 
     <div class="form-element">
-      <label for="medical_condition"
+      <label for="medical-condition"
         >Has your pet ever been diagnosed or shown symptoms of Diabetes or any
         other diseases?</label
       >
       <textarea
-        id="medical_condition"
-        name="medical_condition"
+        id="medical-condition"
+        name="medical-condition"
         cols="30"
         rows="5"
       ></textarea>

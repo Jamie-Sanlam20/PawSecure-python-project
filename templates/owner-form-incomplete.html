@@ -1,0 +1,227 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  /*  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  } */
+
+  body {
+    background-color: #e6bfa6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure full height */
+  }
+
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    background-color: white;
+  }
+
+  p {
+    max-width: 500px;
+    text-align: center;
+    line-height: 25px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  nav button {
+    background-color: white;
+    color: black;
+    border: 1px solid #555;
+    padding: 8px 16px;
+    margin: 5px;
+    margin-top: 13px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  main {
+    display: flex;
+    width: 90%;
+    margin-top: 2px;
+  }
+
+  .info-section {
+    width: 50%;
+    padding: 20px;
+    line-height: 20px;
+    margin-top: 20px;
+  }
+
+  .info-section img {
+    max-width: 500px;
+    margin-top: 60px;
+    border-radius: 20px;
+  }
+
+  .form-section {
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 400px;
+    margin-top: 130px;
+  }
+
+  h1 {
+    font-size: 34px;
+    line-height: 50px;
+    margin-bottom: 10px;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input,
+  select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  .age-contact {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .age-contact select,
+  .age-contact input {
+    width: 48%;
+  }
+
+  button {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #1a252f;
+  }
+</style>
+{% endblock %} {% block content %}
+<section class="form-section">
+  <h2>Tell us about yourself</h2>
+  <form
+    action="{{ url_for('main_bp.create_owner') }}"
+    method="POST"
+    class="form-container"
+  >
+    <!-- Owner's Information -->
+    <div class="form-element">
+      <label for="owner-name">Owner's Name</label>
+      <input
+        type="text"
+        id="owner-name"
+        name="owner_name"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-surname">Owner's Surname</label>
+      <input
+        type="text"
+        id="owner-surname"
+        name="owner_surname"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-date-of-birth">Date of Birth</label>
+      <input
+        type="date"
+        id="owner-date-of-birth"
+        name="owner_date_of_birth"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-contact-number">Contact Number</label>
+      <input
+        type="tel"
+        id="owner-contact-number"
+        name="owner_contact_number"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-physical-address">Physical Address</label>
+      <input
+        type="text"
+        id="owner-physical-address"
+        name="owner_physical_address"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-email-address">Email Address</label>
+      <input
+        type="email"
+        id="owner-email-address"
+        name="owner_email_address"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-password">Password</label>
+      <input
+        type="password"
+        id="owner-password"
+        name="owner_password"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-element">
+      <label for="owner-confirm-password">Confirm Password</label>
+      <input
+        type="password"
+        id="owner-confirm-password"
+        name="owner_confirm_password"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <button type="submit" class="signup-btn">Sign Up</button>
+  </form>
+</section>
+{% endblock %}
