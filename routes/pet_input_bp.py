@@ -31,7 +31,7 @@ def create_pet():
             "pet_type": request.form.get("pet-type"),
             "pet_gender": request.form.get("pet-gender"),
             "breed_type": request.form.get("breed-type"),
-            "breed": request.form.get("breed"),
+            "breed": request.form.get("pet-breed"),
             "medical_conditions": request.form.get("medical-condition"),
         }
 

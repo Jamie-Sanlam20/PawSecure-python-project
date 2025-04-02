@@ -78,13 +78,38 @@
           class="logo"
         />
         <nav class="buttons-nav">
-          <button onclick="window.location.href='/'">Home</button>
-          <button>Partners</button>
-          <button>Contact</button>
-          <button>Login</button>
+          <button onclick="window.location.href='/home'">Home</button>
+          <button onclick="window.location.href='/partners'">Partners</button>
+          <button onclick="window.location.href='/contact'">Contact</button>
+          <button onclick="window.location.href='/login'">Login</button>
         </nav>
+
+        <ul class="buttons-nav">
+          {% if current_user.is_authenticated %}
+          <button onclick="window.location.href='/login'">Logout</button>
+          <li><p>Welcome, {{current_user.name}}!</p></li>
+          {% else %}
+          <button onclick="window.location.href='/login'">Login</button>
+          {% endif %}
+        </ul>
       </header>
     </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div
+      class="alert alert-{{ category }} alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <div class="content">{% block content %} {% endblock %}</div>
 

@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import login_required
 
 from extensions import db
 from models.owner import Owner
@@ -51,6 +52,7 @@ def create_owner():
 
 
 @main_bp.get("/dashboard")
+@login_required
 def dashboard():
     return render_template("dashboard.html")
 
