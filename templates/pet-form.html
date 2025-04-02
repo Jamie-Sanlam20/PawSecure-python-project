@@ -14,20 +14,21 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-width: 500px;
+    width: 600px;
     background-color: white;
-    padding: 20px;
+    padding: 50px;
     border-radius: 20px;
+    margin-top: 50px;
   }
 
   .page-content {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px;
+    margin: 0px 80px;
   }
 
   .page-summary {
-    max-width: 100%;
+    width: 600px;
     justify-self: left;
   }
 
@@ -47,8 +48,7 @@
     color: rgba(54, 133, 181, 1);
   }
 
-  h2,
-  h4 {
+  h2 {
     color: rgba(21, 66, 94, 1);
   }
 
@@ -65,7 +65,7 @@
 
   .progress-bar {
     height: 30px;
-    width: 33.33%;
+    width: 66.66%;
     background-color: rgba(54, 133, 181, 1);
     border-radius: 25px 0 0 25px;
     transition: width 0.3s ease;
@@ -89,10 +89,10 @@
 <section class="page-content">
   <div class="page-summary">
     <h1>Get your quote in a few simple steps!</h1>
-    <h3>
+    <h4>
       Simply let us know a few details about yourself, and your pet, and we’ll
       deliver quotes with the best coverage for you to choose from.
-    </h3>
+    </h4>
     <h4>Progress</h4>
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
@@ -186,9 +186,11 @@
       ></textarea>
     </div>
 
-    <div class="buttons">
-      <button class="add-more" type="submit">Add more Pets</button>
-      <button class="continue" type="submit">Continue</button>
+    <div class="buttons d-flex justify-content-center gap-3 mt-3">
+      <button class="btn btn-dark px-4 py-2" type="submit">
+        Add more Pets
+      </button>
+      <button class="btn btn-success px-4 py-2" type="submit">Continue</button>
     </div>
   </form>
 </section>

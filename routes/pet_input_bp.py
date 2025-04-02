@@ -14,7 +14,7 @@ pet_input_bp = Blueprint("pet_input_bp", __name__)
 
 @pet_input_bp.get("/new")
 def add_pet():
-    return render_template("pet-form-incomplete.html")
+    return render_template("pet-form.html")
 
 
 @pet_input_bp.post("/pet-form")  # HOF

@@ -39,7 +39,7 @@ def submit_login_page():
 
         # Log in the user
         login_user(owner_from_db)
-        flash("Login Successful", "success")
+        # flash("Login Successful", "success")
         return redirect(url_for("main_bp.dashboard"))
 
     except Exception as e:

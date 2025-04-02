@@ -11,12 +11,12 @@ main_bp = Blueprint("main_bp", __name__)
 
 @main_bp.get("/home")
 def homepage():
-    return render_template("home-page-incomplete.html")
+    return render_template("home-page.html")
 
 
 @main_bp.get("/owner-form")
 def add_owner():
-    return render_template("owner-form-incomplete.html")
+    return render_template("owner-form.html")
 
 
 @main_bp.post("/owner-form")
