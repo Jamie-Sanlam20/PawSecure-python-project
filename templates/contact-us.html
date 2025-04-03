@@ -1,132 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f8e5dd;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-      .header {
-        background-color: #f4c7b8;
-        padding: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .logo img {
-        height: 40px;
-        padding-left: 20px;
-      }
-      .nav-buttons {
-        display: flex;
-        gap: 10px;
-        padding-right: 20px;
-      }
-      .nav-buttons button {
-        padding: 10px 20px;
-        border: none;
-        background-color: white;
-        cursor: pointer;
-        font-weight: bold;
-        border-radius: 5px;
-      }
-      .contact-container {
-        background-color: white;
-        width: 50%;
-        margin: 30px auto;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: left;
-      }
-      .contact-container h2 {
-        text-align: center;
-      }
-      .form-group {
-        margin-bottom: 15px;
-      }
-      .form-group label {
-        display: block;
-        font-weight: bold;
-      }
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-      .submit-btn {
-        background-color: #f4c7b8;
-        color: white;
-        padding: 10px;
-        border: none;
-        width: 100%;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="header">
-      <div class="logo">
-        <img src="./logo.jpg" alt="Paw Insure Logo" />
-      </div>
-      <div class="nav-buttons">
-        <button>HOME</button>
-        <button>PARTNERS</button>
-        <button>INSURANCE</button>
-        <button>CONTACT</button>
-      </div>
+{% extends 'base.html' %} {% block title %}Contact Us{% endblock %} {% block
+content %}
+<div class="contact-container">
+  <h2>Contact Us</h2>
+  <p>
+    We provide expert service for satisfied clients every day. We’d like to do
+    the same for you.
+  </p>
+  <form method="POST" action="/contact">
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input type="text" id="first-name" name="first-name" required />
     </div>
-    <div class="contact-container">
-      <h2>Contact Us</h2>
-      <p>
-        We provide expert service for satisfied clients every day. We’d like to
-        do the same for you.
-      </p>
-      <div class="form-group">
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first-name" required />
-      </div>
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input type="text" id="surname" name="surname" required />
-      </div>
-      <div class="form-group">
-        <label for="contact">Contact Number</label>
-        <input type="text" id="contact" name="contact" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div class="form-group">
-        <label for="regarding">Regarding</label>
-        <select id="regarding" name="regarding">
-          <option>Please Select</option>
-          <option>Insurance Inquiry</option>
-          <option>Claims Assistance</option>
-          <option>General Question</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-      </div>
-      <section class="cta-section">
-        <a href="home_page.html">
-          <button class="submit-btn">Send</button>
-        </a>
-      </section>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input type="text" id="surname" name="surname" required />
     </div>
-  </body>
-</html>
+    <div class="form-group">
+      <label for="contact">Contact Number</label>
+      <input type="text" id="contact" name="contact" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="regarding">Regarding</label>
+      <select id="regarding" name="regarding">
+        <option>Please Select</option>
+        <option>Insurance Inquiry</option>
+        <option>Claims Assistance</option>
+        <option>General Question</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Send</button>
+  </form>
+</div>
+{% endblock %}

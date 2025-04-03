@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ebc6ad;
+    color: #333;
+  }
+
+  .container {
+    margin-top: 10px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 30px;
+  }
+
+  .brands {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 20px 0;
+  }
+
+  .brands img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .disclaimer {
+    font-size: 14px;
+    color: #777;
+    margin: 20px 0;
+    line-height: 25px;
+    padding-top: 20px;
+  }
+
+  .cta {
+    font-size: 16px;
+  }
+
+  .cta a {
+    text-decoration: none;
+    color: #4caf50;
+    font-weight: bold;
+  }
+
+  .highlight {
+    color: #8bc34a;
+    font-weight: bold;
+  }
+</style>
+{% endblock %} {% block content %}
+<section class="container">
+  <h1>Compare trusted pet insurance brands.</h1>
+  <p class="subtitle">Compare these leading brands side by side</p>
+
+  <div class="brands">
+    <img src="./agria-pet.jpg" alt="Agria" class="image" />
+    <img src="./one-plan-img.jpg" alt="One Plan" class="image" />
+    <img src="./petrel-care.jpg" alt="Petrel Care" class="image" />
+    <img src="./pets-best-turns.png" alt="PetInsurance" class="image" />
+    <img src="./medipet.jpg" alt="MediPet" class="image" />
+  </div>
+
+  <p class="disclaimer">
+    All our insurer partners are licensed Insurers and FSP’s. <br />
+    We are always trying to add more brands for our customers. If you don’t see
+    a brand, that’s their decision.
+  </p>
+  <p class="cta">
+    Click <a href="#">here</a> for a full list of
+    <span class="highlight">South Africa’s top pet insurance companies</span>
+  </p>
+</section>
+{% endblock %}
