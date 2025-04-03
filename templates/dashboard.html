@@ -139,6 +139,7 @@
 <section class="content">
   <div class="full-page">
     <!-- Card 1 -->
+    {% for pet in pets %}
     <div class="card">
       <img
         src="https://th.bing.com/th/id/OIP.381r-P9kvfxzZ5xWgZ8XvgHaFj?rs=1&pid=ImgDetMain"
@@ -146,29 +147,32 @@
         alt="Pet Image"
       />
       <div class="card-body">
-        <h5 class="card-title">Lola</h5>
+        <h5 class="card-title">{{ pet.pet_name }}</h5>
         <p class="card-text">Dog</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Age: 4</li>
-        <li class="list-group-item">Breed: Pitbull Terrier</li>
-        <li class="list-group-item">Gender: Female</li>
+        <li class="list-group-item">Age: {{ pet.pet_age }}</li>
+        <li class="list-group-item">Breed: {{pet.breed}}</li>
+        <li class="list-group-item">Gender: {{pet.pet_gender}}</li>
       </ul>
       <div class="pet-health">
         <div class="card" style="width: 100%">
           <div class="card-body">
             <h5 class="card-title">Health</h5>
             <div class="card-text">
-              <p class="important">Next Vaccination Date: 12 June 2025</p>
-              <p>Underlying Conditions: None</p>
-              <p>Insurance Plan: OnePlan Premium</p>
+              <p class="important">Next Vaccination Date: {{pet.pet_vacc}}</p>
+              <p>
+                Underlying Conditions: {{pet.medical_conditions if
+                pet.medical_conditions else 'None'}}
+              </p>
+              <p>Insurance Plan: {{pet.insurance_name}}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Card 2 -->
+    {% endfor %}
+    <!-- Card 2
     <div class="card">
       <img
         src="https://th.bing.com/th/id/OIP.381r-P9kvfxzZ5xWgZ8XvgHaFj?rs=1&pid=ImgDetMain"
@@ -196,7 +200,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 {% endblock %}
