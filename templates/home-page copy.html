@@ -1,0 +1,143 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+
+      body {
+        background-color: #ebc6ad;
+        text-align: center;
+      }
+
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+      }
+
+      nav ul li {
+        display: inline;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        background: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        color: black;
+        border: 1px solid gray;
+      }
+
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+      }
+
+
+      .info-section {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        width: 800px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .p2 {
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      .pets-image {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+      }
+
+      h2 {
+        color: #1a237e;
+        margin-top: 10px;
+        line-height: 40px;
+      }
+
+      p {
+        margin-top: 10px;
+        font-weight: 300;
+        line-height: 20px;
+        font-size: 16px;
+      }
+
+      .cta-section {
+        margin-top: 10px;
+      }
+
+      .signup-btn {
+        display: inline-block;
+        text-decoration: none;
+        border: none;
+        background-color: #fff;
+        color: navy;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+}
+
+      .signup-btn:hover {
+        background: #ddd;
+      }
+</style>
+{% endblock %} {% block content %}
+<main>
+      <section class="info-section">
+        <div class="content-box">
+          <img
+            src="https://media.istockphoto.com/id/930281684/photo/dogs-and-cats-peeking-over-web-banner.jpg?s=170667a&w=0&k=20&c=cbj0QmTeuQuaa8ZnoDSQdbLv9DHNmW3t8d5sIqSRC2c="
+            alt="Pets Image"
+            class="pets-image"
+          />
+          <h2>Secure your pet’s future with PawSecure.</h2>
+          <p>
+            An online marketplace that provides you with quotes from various
+            insurance companies, ensuring that you get the best value for money.
+          </p>
+          <p>
+            Who has time to research different plans? <br />
+            Who has time to research different companies? <br /> </p>
+          <p class="p2">With our assistance, we do the work, while you and your furry family
+            reap the benefits.</p>
+          </p>
+        </div>
+      </section>
+
+      <section class="cta-section">
+          <a href="{{url_for('main_bp.add_owner')}}">
+              <button class="signup-btn">Sign up now</button>
+          </a>
+      </section>
+
+</main>
+{% endblock %}
