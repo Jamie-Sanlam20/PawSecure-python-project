@@ -19,6 +19,8 @@ class Pet(db.Model):
     breed_type = db.Column(db.String(10), nullable=False)
     breed = db.Column(db.String(255), nullable=True)
     medical_conditions = db.Column(db.Text, nullable=True)
+    # New field
+    vacc_date = db.Column(db.Date, nullable=True)
 
     def __repr__(self):
         return f"<Pet {self.pet_name}>"
@@ -34,4 +36,5 @@ class Pet(db.Model):
             "breed_type": self.breed_type,
             "breed": self.breed,
             "medical_conditions": self.medical_conditions,
+            "vacc_date": str(self.vacc_date) if self.vacc_date else None,
         }

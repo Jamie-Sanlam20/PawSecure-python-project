@@ -9,6 +9,7 @@ class InsurancePlan(db.Model):
     insurance_name = db.Column(db.String(50), nullable=False)
     price_per_month = db.Column(db.Float, nullable=False)
     features = db.Column(db.String(500), nullable=False)
+    insurance_logo = db.Column(db.String(255))
 
     # Relationship with PetInsurance
     pet_insurances = db.relationship(
