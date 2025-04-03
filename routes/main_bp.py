@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import login_required
 
 from extensions import db
 from models.owner import Owner
@@ -10,12 +11,12 @@ main_bp = Blueprint("main_bp", __name__)
 
 @main_bp.get("/home")
 def homepage():
-    return render_template("home-page-incomplete.html")
+    return render_template("home-page.html")
 
 
 @main_bp.get("/owner-form")
 def add_owner():
-    return render_template("owner-form-incomplete.html")
+    return render_template("owner-form.html")
 
 
 @main_bp.post("/owner-form")
@@ -51,6 +52,7 @@ def create_owner():
 
 
 @main_bp.get("/dashboard")
+@login_required
 def dashboard():
     return render_template("dashboard.html")
 

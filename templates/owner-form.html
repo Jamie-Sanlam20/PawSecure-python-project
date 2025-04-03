@@ -1,29 +1,5 @@
 {% extends "base.html" %} {% block head_content %}
 <style>
-  /*  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  } */
-
-  body {
-    background-color: #e6bfa6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Ensure full height */
-  }
-
-  header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 50px;
-    background-color: white;
-  }
-
   p {
     max-width: 500px;
     text-align: center;
@@ -65,31 +41,28 @@
     border-radius: 20px;
   }
 
-  .form-section {
-    width: 50%;
+  .form-container {
+    display: flex;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-height: 400px;
-    margin-top: 130px;
+    padding: 50px;
+    border-radius: 20px;
+    height: 850px;
+    margin-top: 50px;
+    width: 600px;
+    flex-direction: column;
   }
 
-  h1 {
+  /* h1 {
     font-size: 34px;
     line-height: 50px;
     margin-bottom: 10px;
     max-width: 500px;
     text-align: center;
-  }
+  } */
 
-  h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
+  h1 {
+    color: rgba(21, 66, 94, 1);
+    margin-bottom: 20px;
   }
 
   input,
@@ -123,15 +96,61 @@
   button:hover {
     background-color: #1a252f;
   }
+
+  .progress-container {
+    width: 80%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 30px;
+    width: 33.33%;
+    background-color: rgba(54, 133, 181, 1);
+    border-radius: 25px 0 0 25px;
+    transition: width 0.3s ease;
+  }
+
+  .entire-page {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .page-summary {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dog-owner {
+    margin-top: 40px;
+  }
 </style>
 {% endblock %} {% block content %}
-<section class="form-section">
-  <h2>Tell us about yourself</h2>
+<section class="entire-page">
+  <div class="page-summary">
+    <h1>Get your quote in a few simple steps!</h1>
+    <h4>
+      Simply let us know a few details about yourself, and your pet, and we’ll
+      deliver quotes with the best coverage for you to choose from.
+    </h4>
+    <h4>Progress</h4>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <img
+      class="dog-owner"
+      src="https://cff2.earth.com/uploads/2019/07/08191128/The-personalities-of-animal-owners-are-reflected-in-their-pets.jpg"
+      alt=""
+    />
+  </div>
   <form
     action="{{ url_for('main_bp.create_owner') }}"
     method="POST"
     class="form-container"
   >
+    <h1>Tell us about yourself</h1>
     <!-- Owner's Information -->
     <div class="form-element">
       <label for="owner-name">Owner's Name</label>
@@ -221,7 +240,7 @@
       />
     </div>
 
-    <button type="submit" class="signup-btn">Sign Up</button>
+    <button type="submit" class="signup-btn">Add your pets</button>
   </form>
 </section>
 {% endblock %}
