@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from extensions import db
 from models.owner import Owner
 from models.pet import Pet
+from models.quotes import InsurancePlan, PetInsurance
 
 # 1. Organize
 # 2. app needs to be in main.py
@@ -52,12 +53,41 @@ def create_owner():
         return {"message": str(e)}, 500
 
 
+# @main_bp.get("/dashboard")
+# @login_required
+# def dashboard():
+#     # pets = Pet.query.filter_by(owner_id=current_user.get_id()).all()
+#     # Query to join Pet, PetInsurance, and InsurancePlan tables
+#     pets = (
+#         db.session.query(Pet, InsurancePlan.insurance_name)
+#         .join(PetInsurance, Pet.pet_id == PetInsurance.pet_id)
+#         .join(
+#             InsurancePlan, PetInsurance.insurance_plan_id == InsurancePlan.insurance_id
+#         )
+#         .filter(Pet.owner_id == current_user.get_id())
+#         .all()
+#     )
+
+#     return render_template("dashboard.html", pets=pets)
+
+
 @main_bp.get("/dashboard")
 @login_required
 def dashboard():
     pets = Pet.query.filter_by(owner_id=current_user.get_id()).all()
 
-    return render_template("dashboard.html", pets=pets)
+    # Join Pet and PetInsurance, and get the related insurance information
+    pets_with_insurance = []
+    for pet in pets:
+        pet_data = pet.to_dict()
+        pet_insurance = PetInsurance.query.filter_by(pet_id=pet.pet_id).first()
+        if pet_insurance:
+            pet_data["insurance_name"] = pet_insurance.insurance_plan.insurance_name
+        else:
+            pet_data["insurance_name"] = None
+        pets_with_insurance.append(pet_data)
+
+    return render_template("dashboard.html", pets=pets_with_insurance)
 
 
 @main_bp.get("/claim-form")
@@ -68,3 +98,13 @@ def add_claim():
 @main_bp.get("/claim-tracker")
 def claim_tracker():
     return render_template("claim-tracker.html")
+
+
+@main_bp.get("/partners-page")
+def partners_page():
+    return render_template("partners-page.html")
+
+
+@main_bp.get("/contact")
+def contact_page():
+    return render_template("contact-us.html")

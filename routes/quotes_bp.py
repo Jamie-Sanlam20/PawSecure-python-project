@@ -41,7 +41,7 @@ def link_insurance_plan(pet_id):
 
         # Create a PetInsurance entry linking the pet to the selected plan
         new_pet_insurance = PetInsurance(
-            pet_id=pet_id,
+            pet_id=pet_id,  # type: ignore
             insurance_plan_id=insurance_plan_id,  # type: ignore
         )
         db.session.add(new_pet_insurance)

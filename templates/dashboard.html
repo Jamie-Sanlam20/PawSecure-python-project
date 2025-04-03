@@ -165,7 +165,7 @@
                 Underlying Conditions: {{pet.medical_conditions if
                 pet.medical_conditions else 'None'}}
               </p>
-              <p>Insurance Plan: {{pet.insurance_name}}</p>
+              <p>Insurance Plan: {{ pet.insurance_name or 'No Insurance' }}</p>
             </div>
           </div>
         </div>

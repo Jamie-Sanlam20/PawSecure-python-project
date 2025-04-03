@@ -30,7 +30,7 @@ class PetInsurance(db.Model):
     )  # FK to insurance plans
 
     # Relationship with Pet and InsurancePlan
-    pet = db.relationship("Pet", backref="pet_insurances", lazy=True)
+    pet = db.relationship("Pet", backref="pet_ref", lazy=True)
     insurance_plan = db.relationship(
         "InsurancePlan",
         backref="insurance_plan_ref",

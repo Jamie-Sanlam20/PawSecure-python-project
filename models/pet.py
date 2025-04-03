@@ -9,6 +9,8 @@ class Pet(db.Model):
         db.Integer, db.ForeignKey("owner.owner_id"), nullable=False
     )  # FK to owner id
     owner = db.relationship("Owner", backref="pets", lazy=True)
+    # Relationship to link pet with insurance via PetInsurance table
+    pet_insurance = db.relationship("PetInsurance", backref="pet_ref", lazy=True)
 
     pet_type = db.Column(db.String(10), nullable=False)
     pet_name = db.Column(db.String(255), nullable=False)
