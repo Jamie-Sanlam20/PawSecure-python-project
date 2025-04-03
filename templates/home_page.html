@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PawSecure</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
+{% extends "base.html" %} {% block head_content %}
+<style>
 
       * {
         margin: 0;
@@ -115,22 +109,9 @@
       .signup-btn:hover {
         background: #ddd;
       }
-    </style>
-  </head>
-  <body>
-    <header>
-      <img src="./company-logo.jpg" alt="PawSecure Logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Partners</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Login</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
+</style>
+{% endblock %} {% block content %}
+<main>
       <section class="info-section">
         <div class="content-box">
           <img
@@ -153,11 +134,10 @@
       </section>
 
       <section class="cta-section">
-          <a href="Owner-info.html">
+          <a href="{{url_for('main_bp.add_owner')}}">
               <button class="signup-btn">Sign up now</button>
           </a>
       </section>
 
-    </main>
-  </body>
-</html>
+</main>
+{% endblock %}
