@@ -35,6 +35,7 @@ def create_pet():
             "breed_type": request.form.get("breed-type"),
             "breed": request.form.get("pet-breed"),
             "medical_conditions": request.form.get("medical-condition"),
+            "vacc_date": request.form.get("vacc-date"),
         }
 
         new_pet = Pet(**data)

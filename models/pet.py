@@ -9,6 +9,8 @@ class Pet(db.Model):
         db.Integer, db.ForeignKey("owner.owner_id"), nullable=False
     )  # FK to owner id
     owner = db.relationship("Owner", backref="pets", lazy=True)
+    # Relationship to link pet with insurance via PetInsurance table
+    pet_insurance = db.relationship("PetInsurance", backref="pet_ref", lazy=True)
 
     pet_type = db.Column(db.String(10), nullable=False)
     pet_name = db.Column(db.String(255), nullable=False)
@@ -17,6 +19,8 @@ class Pet(db.Model):
     breed_type = db.Column(db.String(10), nullable=False)
     breed = db.Column(db.String(255), nullable=True)
     medical_conditions = db.Column(db.Text, nullable=True)
+    # New field
+    vacc_date = db.Column(db.Date, nullable=True)
 
     def __repr__(self):
         return f"<Pet {self.pet_name}>"
@@ -32,4 +36,5 @@ class Pet(db.Model):
             "breed_type": self.breed_type,
             "breed": self.breed,
             "medical_conditions": self.medical_conditions,
+            "vacc_date": str(self.vacc_date) if self.vacc_date else None,
         }
