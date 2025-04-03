@@ -6,9 +6,11 @@ from config import Config
 from extensions import db
 from models.owner import Owner
 from models.pet import Pet
+from routes import quotes_bp
 from routes.auth_bp import auth_bp
 from routes.main_bp import main_bp
 from routes.pet_input_bp import pet_input_bp
+from routes.quotes_bp import quotes_bp
 
 
 def create_app():
@@ -38,11 +40,12 @@ def create_app():
     app.register_blueprint(pet_input_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(main_bp)
+    app.register_blueprint(quotes_bp)
 
     # New route for partners page
-    @app.route("/partners-page")
-    def compare_insurance():
-        return render_template("partners-page.html")
+    # @app.route("/partners-page")
+    # def compare_insurance():
+    #     return render_template("partners-page.html")
 
     return app
 

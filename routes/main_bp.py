@@ -1,8 +1,9 @@
 from flask import Blueprint, redirect, render_template, request, url_for
-from flask_login import login_required
+from flask_login import current_user, login_required
 
 from extensions import db
 from models.owner import Owner
+from models.pet import Pet
 
 # 1. Organize
 # 2. app needs to be in main.py
@@ -54,7 +55,9 @@ def create_owner():
 @main_bp.get("/dashboard")
 @login_required
 def dashboard():
-    return render_template("dashboard.html")
+    pets = Pet.query.filter_by(owner_id=current_user.get_id()).all()
+
+    return render_template("dashboard.html", pets=pets)
 
 
 @main_bp.get("/claim-form")
