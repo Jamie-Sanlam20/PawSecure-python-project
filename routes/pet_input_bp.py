@@ -17,7 +17,7 @@ def add_pet():
     return render_template("pet-form.html")
 
 
-@pet_input_bp.post("/pet-form")  # HOF
+@pet_input_bp.post("/pet-form")  # type: ignore # HOF
 def create_pet():
     try:
         owner_id = request.form.get("owner_id")
@@ -43,7 +43,12 @@ def create_pet():
         db.session.commit()
 
         # Redirect to pet form again to add more pets
-        return redirect(url_for("quotes_bp.select_insurance", pet_id=new_pet.pet_id))
+        if "add_more_pets" in request.form:
+            return redirect(url_for("pet_input_bp.create_pet"))
+        elif "get_quote" in request.form:
+            return redirect(
+                url_for("quotes_bp.select_insurance", pet_id=new_pet.pet_id)
+            )
 
     except Exception as e:
         db.session.rollback()

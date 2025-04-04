@@ -117,6 +117,10 @@
       flex-direction: column;
     }
   }
+
+  .insurance-logo {
+    width: 80px;
+  }
 </style>
 {% endblock %} {% block content %}
 <!-- Sidebar -->
@@ -156,12 +160,16 @@
           <div class="card-body">
             <h5 class="card-title">Health</h5>
             <div class="card-text">
-              <p class="important">Next Vaccination Date: {{pet.vacc_date}}</p>
+              <p class="important">Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
               <p>
-                Underlying Conditions: {{pet.medical_conditions if
+                Underlying Conditions </p><p>{{pet.medical_conditions if
                 pet.medical_conditions else 'None'}}
               </p>
-              <p>Insurance Plan: {{ pet.insurance_name or 'No Insurance' }}</p>
+              <p>
+                Insurance Plan</p>
+                <img class="insurance-logo" src="{{ pet.insurance_logo }}" />{{
+                pet.insurance_name or 'No Insurance' }}
+              </p>
             </div>
           </div>
         </div>

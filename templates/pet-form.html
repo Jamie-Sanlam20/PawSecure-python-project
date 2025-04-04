@@ -117,11 +117,11 @@
 
     <div class="form-element-block">
       <label for="pet-type">
-        <input type="radio" name="pet-type" value="dog" r />
+        <input type="radio" name="pet-type" value="Dog" r />
         <i class="fa-solid fa-dog"></i> Dog
       </label>
       <label for="pet-type">
-        <input type="radio" name="pet-type" value="cat" />
+        <input type="radio" name="pet-type" value="Cat" />
         <i class="fa-solid fa-cat"></i> Cat
       </label>
     </div>
@@ -146,9 +146,11 @@
 
     <div class="form-element">
       <p>Gender</p>
-      <label><input type="radio" name="pet-gender" value="male" /> Male</label>
-      <label
-        ><input type="radio" name="pet-gender" value="female" /> Female</label
+      <label for="pet-gender"
+        ><input type="radio" name="pet-gender" value="Male" /> Male</label
+      >
+      <label for="pet-gender"
+        ><input type="radio" name="pet-gender" value="Female" /> Female</label
       >
     </div>
 
@@ -166,10 +168,10 @@
     <div class="form-element">
       <label for="breed">Main Breed</label>
       <select id="breed" name="pet-breed">
-        <option value="PBT">Pitbull Terrier</option>
-        <option value="JRT">Jack Russell Terrier</option>
-        <option value="ST">Staffordshire Terrier</option>
-        <option value="BT">Boston Terrier</option>
+        <option value="Pitbull Terrier">Pitbull Terrier</option>
+        <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+        <option value="Staffordshire Terrier">Staffordshire Terrier</option>
+        <option value="Boston Terrier">Boston Terrier</option>
       </select>
     </div>
     <div class="form-element">
@@ -177,7 +179,7 @@
       <input
         type="date"
         id="vacc-date"
-        name="owner_date_of_birth"
+        name="vacc-date"
         class="input-field"
         required
         name="vacc-date"
@@ -197,10 +199,12 @@
     </div>
 
     <div class="buttons d-flex justify-content-center gap-3 mt-3">
-      <button class="btn btn-dark px-4 py-2" type="submit">
+      <button class="btn btn-dark px-4 py-2" type="submit" name="add_more_pets">
         Add more Pets
       </button>
-      <button class="btn btn-success px-4 py-2" type="submit">Continue</button>
+      <button class="btn btn-success px-4 py-2" type="submit" name="get_quote">
+        Get quote
+      </button>
     </div>
   </form>
 </section>
