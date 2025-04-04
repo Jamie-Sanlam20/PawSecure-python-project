@@ -8,36 +8,69 @@
   }
 
   .container {
-    margin-top: 10px;
+    margin-top: 2px;
     padding: 20px;
   }
 
   h1 {
     font-size: 50px;
     font-weight: bold;
+    margin-top: 0;
   }
 
   .subtitle {
     font-size: 18px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     color: #000000;
     margin-bottom: 30px;
   }
 
-  .brands {
+  .cards {
     display: flex;
     justify-content: center;
-    gap: 60px;
-    margin: 20px 0;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 
-  .brands img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 20px;
+  .card {
+    background: rgb(230, 213, 213);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .card img {
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    flex-grow: 1;
+  }
+
+  .card-description {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 20px;
+    flex-grow: 1;
   }
 
   .disclaimer {
-    font-size: 14px;
+    font-size: 16px;
     color: #777;
     margin: 20px 0;
     line-height: 25px;
@@ -45,7 +78,7 @@
   }
 
   .cta {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .cta a {
@@ -58,18 +91,125 @@
     color: #8bc34a;
     font-weight: bold;
   }
+  .feature {
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+  }
+  .feature .icon {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  .learn-more {
+    color: #4caf50;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 5px;
+    line-height: 30px;
+    padding-top: 20px;
+  }
+
+  .learn-more:hover {
+    text-decoration: underline;
+  }
 </style>
 {% endblock %} {% block content %}
 <section class="container">
   <h1>Compare trusted pet insurance brands.</h1>
   <p class="subtitle">Compare these leading brands side by side</p>
 
-  <div class="brands">
-    <img src="./agria-pet.jpg" alt="Agria" class="image" />
-    <img src="./one-plan-img.jpg" alt="One Plan" class="image" />
-    <img src="./petrel-care.jpg" alt="Petrel Care" class="image" />
-    <img src="./pets-best-turns.png" alt="PetInsurance" class="image" />
-    <img src="./medipet.jpg" alt="MediPet" class="image" />
+  <div class="cards">
+    <div class="card">
+      <img
+        src="https://www.veterinary-practice.com/wp-content/uploads/2020/10/agria_logo_eng_rgb.png"
+        alt="Agria"
+      />
+      <div class="card-title">Agria Pet Insurance</div>
+      <p class="card-description">
+        Agria Pet Insurance is dedicated to providing comprehensive coverage for
+        your beloved pets.
+      </p>
+      <div class="feature">
+        <span class="icon">✔</span> Comprehensive Coverage
+      </div>
+      <div class="feature"><span class="icon">✔</span> Flexible Plans</div>
+      <div class="feature">
+        <span class="icon">✔</span> Direct Payment to Veterinarians
+      </div>
+      <a href="#" class="learn-more">Learn More ></a>
+    </div>
+    <div class="card">
+      <img
+        src="https://www.oneplan.co.za/assets/images/Logos/New%20logos/OnePlan%20Logo%20Health%20Insurance-01.png"
+        alt="One Plan"
+      />
+      <div class="card-title">One Plan</div>
+      <p class="card-description">
+        Our mission is to provide flexible and comprehensive pet insurance
+        solutions that cater to the unique needs of every pet owner.
+      </p>
+      <div class="feature">
+        <span class="icon">✔</span> Flexible Coverage Options
+      </div>
+      <div class="feature"><span class="icon">✔</span> No Upper Age Limits</div>
+      <div class="feature">
+        <span class="icon">✔</span> Quick Response Times
+      </div>
+      <a href="#" class="learn-more">Learn More ></a>
+    </div>
+    <div class="card">
+      <img
+        src="https://images.contentstack.io/v3/assets/blt8fa867efd5d7acee/blt244f57d9bab8c3f0/61424f55f725af79f53fbe5d/pm_health_refresh.svg"
+        alt="Petrel Care"
+      />
+      <div class="card-title">Lifetime Pet Cover</div>
+      <p class="card-description">
+        Lifetime Pet Cover is devoted to providing lifelong insurance solutions
+        for your beloved pets.
+      </p>
+      <div class="feature"><span class="icon">✔</span> Lifetime Cover</div>
+      <div class="feature"><span class="icon">✔</span> No Claims Limit</div>
+      <div class="feature"><span class="icon">✔</span> Multi-Pet Discount</div>
+      <a href="#" class="learn-more">Learn More ></a>
+    </div>
+    <div class="card">
+      <img
+        src="https://www.pinpaws.com/wp-content/uploads/2024/09/Dog-Cat-Icon.png"
+        alt="PetInsurance"
+      />
+      <div class="card-title">Pets Best</div>
+      <p class="card-description">
+        At PetsBest, we are passionate about supporting pet owners with reliable
+        and affordable pet insurance solutions.
+      </p>
+      <div class="feature"><span class="icon">✔</span> Comprehensive Plans</div>
+      <div class="feature"><span class="icon">✔</span> No Lifetime Limits</div>
+      <div class="feature">
+        <span class="icon">✔</span> Fast Claims Reimbursements
+      </div>
+      <a href="#" class="learn-more">Learn More ></a>
+    </div>
+    <div class="card">
+      <img
+        src="https://medipet.co.za/wp-content/uploads/2020/04/MP-genuine-cover.png"
+        alt="MediPet"
+      />
+      <div class="card-title">MediPet</div>
+      <p class="card-description">
+        MediPet is dedicated to making pet insurance straightforward and
+        accessible for all pet owners.
+      </p>
+      <div class="feature"><span class="icon">✔</span> Customizable Plans</div>
+      <div class="feature">
+        <span class="icon">✔</span> Quick Claims Processing
+      </div>
+      <div class="feature">
+        <span class="icon">✔</span> Coverage for Older Pets
+      </div>
+      <a href="#" class="learn-more">Learn More ></a>
+    </div>
   </div>
 
   <p class="disclaimer">
