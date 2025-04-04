@@ -79,8 +79,8 @@
 
       h2 {
         color: #1a237e;
-        margin-top: 10px;
-        line-height: 40px;
+        padding-bottom: 25px;
+        line-height: 20px;
       }
 
       p {
@@ -110,6 +110,49 @@
       .signup-btn:hover {
         background: #ddd;
       }
+
+      .partner-section {
+    text-align: center;
+    padding: 30px 0;
+
+}
+
+.partner-section h2 {
+    font-size: 22px;
+    color: #8b8b44;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.partner-logos img {
+    width: 120px;
+    opacity: 0.6;
+    object-fit: fill;
+}
+
+.cta {
+    font-size: 18px;
+    padding-top: 30px;
+  }
+
+  .cta a {
+    text-decoration: none;
+    color: #4caf50;
+    font-weight: bold;
+  }
+
+  .highlight {
+    color: #8b8b44;
+    font-weight: bold;
+  }
+
 </style>
 {% endblock %} {% block content %}
 <main>
@@ -139,6 +182,24 @@
               <button class="signup-btn">Sign up now</button>
           </a>
       </section>
+
+      <section class="partner-section">
+    <h2>Compare Pet Insurance and other popular products</h2>
+    <div class="partner-logos">
+        <img src="https://medshield.co.za/wp-content/uploads/2023/03/blue-logo.png" alt="Medshield" />
+        <img src="https://www.hippo.co.za/globalassets/new-partner-pages/hepstar-travel-insurance/hepstar_logo.png" alt="Hepstar" />
+        <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/57f255330000ff0005958407/0x0.png" alt="Agria" />
+        <img src="https://www.oneplan.co.za/assets/images/Logos/New%20logos/OnePlan%20Logo%20Health%20Insurance-01.png" alt="OnePlan" />
+        <img src="https://www.lifetimepetcover.co.uk/src/images/logos/Sml_Blue_Logo.png" alt="Dotsure" />
+        <img src="https://imageserver.petsbest.com/website/PetsBestLogoshort.png" alt="PetsBest" />
+        <img src="https://medipet.co.za/wp-content/uploads/2021/05/medipet-pet-insurance-south-africa-logo-tm-white.png" alt="MediPet" />
+    </div>
+    <p class="cta">
+    Click <a href="http://127.0.0.1:5000/partners-page">here</a> to learn more about
+    <span class="highlight">Our Partners.</span>
+  </p>
+</section>
+
 
 </main>
 {% endblock %}
