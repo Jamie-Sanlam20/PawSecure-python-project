@@ -52,7 +52,8 @@
     color: rgba(21, 66, 94, 1);
   }
 
-  .breed-word {
+  .breed-word,
+  .gender {
     margin-bottom: 0px;
   }
 
@@ -144,8 +145,8 @@
       />
     </div>
 
-    <div class="form-element">
-      <p>Gender</p>
+    <p class="gender">Gender</p>
+    <div class="form-element-block">
       <label for="pet-gender"
         ><input type="radio" name="pet-gender" value="Male" /> Male</label
       >
@@ -157,11 +158,10 @@
     <p class="breed-word">Breed Type</p>
     <div class="form-element-block">
       <label
-        ><input type="radio" name="breed-type" value="pure-breed" /> Pure
-        Breed</label
+        ><input type="radio" name="breed-type" value="Pure" /> Pure Breed</label
       >
       <label
-        ><input type="radio" name="breed-type" value="mixed" /> Mixed
+        ><input type="radio" name="breed-type" value="Mixed" /> Mixed
       </label>
     </div>
 

@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, session, url_for
 
 from extensions import db
 
@@ -12,9 +12,10 @@ from models.pet import Pet
 pet_input_bp = Blueprint("pet_input_bp", __name__)
 
 
-@pet_input_bp.get("/new")
+@pet_input_bp.get("/pet-form")
 def add_pet():
-    return render_template("pet-form.html")
+    owner_id = request.args.get("owner_id")
+    return render_template("pet-form.html", owner_id=owner_id)
 
 
 @pet_input_bp.post("/pet-form")  # type: ignore # HOF
@@ -42,13 +43,25 @@ def create_pet():
         db.session.add(new_pet)
         db.session.commit()
 
+        if "added_pet_ids" not in session:
+            session["added_pet_ids"] = []
+
+        session["added_pet_ids"].append(new_pet.pet_id)
+        session.modified = True  # Required to persist session updates
+
         # Redirect to pet form again to add more pets
         if "add_more_pets" in request.form:
-            return redirect(url_for("pet_input_bp.create_pet"))
+            return redirect(url_for("pet_input_bp.add_pet", owner_id=owner_id))
         elif "get_quote" in request.form:
-            return redirect(
-                url_for("quotes_bp.select_insurance", pet_id=new_pet.pet_id)
-            )
+            # Single pet
+            if len(session["added_pet_ids"]) == 1:
+                return redirect(
+                    url_for(
+                        "quotes_bp.select_insurance", pet_id=session["added_pet_ids"][0]
+                    )
+                )
+            else:  # Multiple pets
+                return redirect(url_for("quotes_bp.multi_select_insurance"))
 
     except Exception as e:
         db.session.rollback()
