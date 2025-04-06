@@ -89,25 +89,30 @@
 <section class="content">
   <div class="container mt-5">
     <h2>Claims Overview</h2>
+    {% if claims %}
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Pet</th>
           <th>Reason</th>
           <th>Claim Amount</th>
-          <th>Granted Amount</th>
+          <th>Claim Date</th>
           <th>Claim Status</th>
         </tr>
       </thead>
       <tbody>
+        {% for claim in claims %}
         <tr>
-          <td>Kane</td>
-          <td>Vaccination</td>
-          <td>R500</td>
-          <td>R350</td>
-          <td><span class="badge bg-warning">Pending</span></td>
+          <td>{{ claim.pet_name }}</td>
+          <td>{{ claim.reason }}</td>
+          <td>{{ claim.amount }}</td>
+          <td>{{ claim.claim_date }}</td>
+          <td>
+            <span class="badge bg-warning">{{ claim.claim_status }}</span>
+          </td>
         </tr>
-        <tr>
+        {% endfor %}
+        <!-- <tr>
           <td>Lola</td>
           <td>Vaccination</td>
           <td>R700</td>
@@ -127,9 +132,12 @@
           <td>R600</td>
           <td>R600</td>
           <td><span class="badge bg-success">Resolved</span></td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
+    {% else %}
+    <h3>You haven't submitted any claims yet.</h3>
+    {% endif %}
   </div>
 </section>
 {% endblock %}

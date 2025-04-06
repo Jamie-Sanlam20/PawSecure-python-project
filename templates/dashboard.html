@@ -121,6 +121,11 @@
   .insurance-logo {
     width: 80px;
   }
+
+  .health-info {
+    color: gray
+  }
+
 </style>
 {% endblock %} {% block content %}
 <!-- Sidebar -->
@@ -151,21 +156,21 @@
         <p class="card-text">Dog</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Age: {{ pet.pet_age }}</li>
-        <li class="list-group-item">Breed: {{pet.breed}}</li>
-        <li class="list-group-item">Gender: {{pet.pet_gender}}</li>
+        <li class="list-group-item">{{ pet.pet_age }} years old</li>
+        <li class="list-group-item">{{pet.breed}}</li>
+        <li class="list-group-item">{{pet.pet_gender}}</li>
       </ul>
       <div class="pet-health">
         <div class="card" style="width: 100%">
           <div class="card-body">
             <h5 class="card-title">Health</h5>
             <div class="card-text">
-              <p class="important">Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
-              <p>
+              <p class="health-info">Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
+              <p class="health-info">
                 Underlying Conditions </p><p>{{pet.medical_conditions if
                 pet.medical_conditions else 'None'}}
               </p>
-              <p>
+              <p class="health-info">
                 Insurance Plan</p>
                 <img class="insurance-logo" src="{{ pet.insurance_logo }}" />{{
                 pet.insurance_name or 'No Insurance' }}
