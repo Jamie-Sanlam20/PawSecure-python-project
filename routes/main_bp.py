@@ -83,6 +83,7 @@ def dashboard():
         pet_insurance = PetInsurance.query.filter_by(pet_id=pet.pet_id).first()
         if pet_insurance:
             pet_data["insurance_name"] = pet_insurance.insurance_plan.insurance_name
+            pet_data["insurance_logo"] = pet_insurance.insurance_plan.insurance_logo
         else:
             pet_data["insurance_name"] = None
         pets_with_insurance.append(pet_data)

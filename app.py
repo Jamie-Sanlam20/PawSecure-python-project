@@ -42,11 +42,6 @@ def create_app():
     app.register_blueprint(main_bp)
     app.register_blueprint(quotes_bp)
 
-    # New route for partners page
-    # @app.route("/partners-page")
-    # def compare_insurance():
-    #     return render_template("partners-page.html")
-
     return app
 
 
