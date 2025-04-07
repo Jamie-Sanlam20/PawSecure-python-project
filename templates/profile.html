@@ -1,0 +1,135 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+  }
+
+  .sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+
+  .side-nav {
+    margin-top: 40px;
+  }
+
+  .content {
+    margin-left: 150px;
+    padding: 30px;
+  }
+
+  .personal-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  .mb-3 {
+    align-self: center;
+  }
+
+  .card-img-top {
+    align-self: center;
+    width: 100px;
+    margin-top: 20px;
+  }
+
+  .owner-id,
+  .personal-title {
+    text-align: center;
+  }
+
+  .personal-title {
+    color: #0d6efd;
+  }
+
+  .personal {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+</style>
+{% endblock %} {% block content %}
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+  <a href="/claim-tracker"
+    ><i class="fa-solid fa-clipboard-check"></i> Claim Tracker</a
+  >
+  <a href="/claim-form"
+    ><i class="fa-solid fa-file-circle-plus"></i> Submit Claim</a
+  >
+  <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
+</div>
+
+<!-- Content -->
+<section class="content">
+  <h2>Owner Profile</h2>
+  <div class="card" style="width: 60rem">
+    <img
+      src="https://www.pngmart.com/files/23/Profile-PNG-Photo.png"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <p class="card-text owner-id">Owner ID: {{ owner.owner_id }}</p>
+    </div>
+    <h5 class="card-title personal-title">Personal Information</h5>
+    <div class="card w-50 mb-3 main">
+      <div class="card-body personal">
+        <!-- <h5 class="card-title">Personal Information</h5> -->
+        <div class="personal-info">
+          <p class="card-text">Full Name</p>
+          <p class="card-text">{{ owner.name }} {{ owner.surname }}</p>
+        </div>
+        <div class="personal-info">
+          <p class="card-text">Date of Birth</p>
+          <p class="card-text">{{ owner.date_of_birth }}</p>
+        </div>
+        <div class="personal-info">
+          <p class="card-text">Contact number</p>
+          <p class="card-text">{{ owner.contact_number }}</p>
+        </div>
+        <div class="personal-info">
+          <p class="card-text">Physical address</p>
+          <p class="card-text">{{ owner.physical_address }}</p>
+        </div>
+        <div class="personal-info">
+          <p class="card-text">Email address</p>
+          <p class="card-text">{{ owner.email_address }}</p>
+        </div>
+        <a href="{{url_for('main_bp.profile_update')}}" class="btn btn-primary"
+          >Update</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block head_content %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+  }
+
+  .sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+
+  .side-nav {
+    margin-top: 40px;
+  }
+
+  .content {
+    margin-left: 150px;
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+    flex-grow: 1;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-element {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+
+  .form-element label {
+    width: 200px;
+    font-weight: bold;
+  }
+
+  .form-element input,
+  .form-element select,
+  .form-element textarea {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 30px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #575757;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+  <a href="/claim-tracker"><i class="fa-solid fa-clipboard-check"></i> Claim Tracker</a>
+  <a href="/claim-form"><i class="fa-solid fa-file-circle-plus"></i> Submit Claim</a>
+  <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="container">
+    <div class="header">
+      <h2>Update Pet Info</h2>
+    </div>
+    <form action="{{ url_for('main_bp.update_pet', pet_id=pet.pet_id) }}" method="POST" class="form-container">
+      <div class="form-element">
+        <label for="pet_name">Pet Name</label>
+        <input type="text" id="pet_name" name="pet_name" value="{{ pet.pet_name }}" required />
+      </div>
+
+      <div class="form-element">
+        <label for="pet_age">Age</label>
+        <input type="number" id="pet_age" name="pet_age" value="{{ pet.pet_age }}" required />
+      </div>
+
+      <div class="form-element">
+        <label for="breed">Breed</label>
+        <input type="text" id="breed" name="breed" value="{{ pet.breed }}" required />
+      </div>
+
+      <div class="form-element">
+        <label for="pet_gender">Gender</label>
+        <select id="pet_gender" name="pet_gender" required>
+          <option value="Male" {{ 'selected' if pet.pet_gender == 'Male' }}>Male</option>
+          <option value="Female" {{ 'selected' if pet.pet_gender == 'Female' }}>Female</option>
+        </select>
+      </div>
+
+      <div class="form-element">
+        <label for="vacc_date">Vaccination Date</label>
+        <input type="date" id="vacc_date" name="vacc_date" value="{{ pet.vacc_date }}" />
+      </div>
+
+      <div class="form-element">
+        <label for="medical_conditions">Medical Conditions</label>
+        <textarea id="medical_conditions" name="medical_conditions">{{ pet.medical_conditions }}</textarea>
+      </div>
+
+      <div class="form-element">
+        <label for="insurance_name">Insurance Name</label>
+        <input type="text" id="insurance_name" name="insurance_name" value="{{ pet.insurance_name }}" />
+      </div>
+
+      <button type="submit">Update Pet</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

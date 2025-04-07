@@ -123,8 +123,20 @@
   }
 
   .health-info {
-    color: gray
+    color: gray;
+    margin-bottom: 0px;
   }
+
+  .btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
 
 </style>
 {% endblock %} {% block content %}
@@ -138,7 +150,7 @@
     <a href="/claim-form"
       ><i class="fa-solid fa-file-circle-plus"></i> Submit Claim</a
     >
-    <a href="./profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+    <a href="./profile"><i class="fa-solid fa-user"></i> Profile</a>
   </nav>
 </div>
 
@@ -165,20 +177,33 @@
           <div class="card-body">
             <h5 class="card-title">Health</h5>
             <div class="card-text">
-              <p class="health-info">Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
-              <p class="health-info">
-                Underlying Conditions </p><p>{{pet.medical_conditions if
-                pet.medical_conditions else 'None'}}
-              </p>
-              <p class="health-info">
-                Insurance Plan</p>
-                <img class="insurance-logo" src="{{ pet.insurance_logo }}" />{{
-                pet.insurance_name or 'No Insurance' }}
-              </p>
+              <div class="health-box">
+                <p class="health-info">Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
+              </div>
+              <div class="health-box">
+                <p class="health-info">
+                  Underlying Conditions </p><p>{{pet.medical_conditions if
+                  pet.medical_conditions else 'None'}}
+                </p>
+              </div>
+              <div class="health-box">
+                <p class="health-info">
+                  Insurance Plan</p>
+                  <img class="insurance-logo" src="{{ pet.insurance_logo }}" />{{
+                  pet.insurance_name or 'No Insurance' }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="text-center mb-3">
+  <a href="{{ url_for('main_bp.pet_update', pet_id=pet.pet_id) }}" class="btn btn-primary">
+    <i class="fa-solid fa-pen-to-square"></i> Update Pet
+  </a>
+</div>
+
+
     </div>
     {% endfor %}
     <!-- Card 2
