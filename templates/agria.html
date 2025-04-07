@@ -1,0 +1,131 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  .premium-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #ffffff;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: #002855;
+    margin-bottom: 10px;
+    font-family: "Georgia", serif;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .info-card {
+    background: #fff;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    padding: 30px 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .info-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+
+  .info-card h3 {
+    font-size: 1.1rem;
+    color: #002855;
+    margin-bottom: 10px;
+  }
+
+  .info-card p {
+    color: #333;
+    font-size: 0.95rem;
+  }
+
+  .quote-btn-wrapper {
+    margin-top: 40px;
+  }
+
+  .quote-btn {
+    background-color: #002855;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .quote-btn:hover {
+    background-color: #146d14;
+  }
+</style>
+
+{% endblock %} {% block content %}
+<section class="premium-section">
+  <h2 class="section-title">Proud to be premium</h2>
+  <p class="section-subtitle">
+    Since 1890 we have helped millions of pets live long and healthy lives
+    giving owners peace of mind and leaving a legacy of love.
+  </p>
+
+  <div class="card-container">
+    <div class="info-card">
+      <img
+        src="https://png.pngtree.com/png-vector/20230124/ourmid/pngtree-pet-care-logo-png-image_6571337.png"
+        alt="Vet Icon"
+      />
+      <h3>Up to £20,000 towards vet bills every year</h3>
+      <p>So your pet can get the care they need.</p>
+    </div>
+
+    <div class="info-card">
+      <img
+        src="https://png.pngtree.com/png-clipart/20231015/original/pngtree-d-rendering-of-isolated-gold-number-98-on-white-background-with-png-image_13304833.png"
+        alt="Claims Icon"
+      />
+      <h3>We pay 98% of claims*</h3>
+      <p>And we can pay your vet directly, so you can focus on your pet.</p>
+    </div>
+
+    <div class="info-card">
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/017/197/511/non_2x/money-bag-icon-transparent-background-free-png.png"
+        alt="Premium Icon"
+      />
+      <h3>No increase in your premiums when you claim</h3>
+      <p>
+        So you don’t have to worry about the cost of insurance when you go to
+        the vet.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <img
+        src="https://static.vecteezy.com/system/resources/thumbnails/021/155/507/small_2x/a-blank-phone-mockup-no-background-free-png.png"
+        alt="Video Call Icon"
+      />
+      <h3>Free vet video calls, 24/7</h3>
+      <p>Which means help is always on hand if you’re worried.</p>
+    </div>
+  </div>
+
+  <div class="quote-btn-wrapper">
+    <a href="#" class="quote-btn">Get a quote ⟶</a>
+  </div>
+</section>
+{% endblock %}
