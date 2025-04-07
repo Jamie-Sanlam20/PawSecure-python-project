@@ -117,12 +117,12 @@
     <h2>Let’s find the best insurance to Secure your Furry family’s future</h2>
 
     <div class="form-element-block">
-      <label for="pet-type">
-        <input type="radio" name="pet-type" value="Dog" r />
+      <label for="pet-type-dog">
+        <input type="radio" id="pet-type-dog" name="pet-type" value="Dog" />
         <i class="fa-solid fa-dog"></i> Dog
       </label>
-      <label for="pet-type">
-        <input type="radio" name="pet-type" value="Cat" />
+      <label for="pet-type-cat">
+        <input type="radio" id="pet-type-cat" name="pet-type" value="Cat" />
         <i class="fa-solid fa-cat"></i> Cat
       </label>
     </div>
@@ -147,21 +147,45 @@
 
     <p class="gender">Gender</p>
     <div class="form-element-block">
-      <label for="pet-gender"
-        ><input type="radio" name="pet-gender" value="Male" /> Male</label
-      >
-      <label for="pet-gender"
-        ><input type="radio" name="pet-gender" value="Female" /> Female</label
-      >
+      <label for="pet-gender-male">
+        <input
+          type="radio"
+          id="pet-gender-male"
+          name="pet-gender"
+          value="Male"
+        />
+        Male
+      </label>
+      <label for="pet-gender-female">
+        <input
+          type="radio"
+          id="pet-gender-female"
+          name="pet-gender"
+          value="Female"
+        />
+        Female
+      </label>
     </div>
 
     <p class="breed-word">Breed Type</p>
     <div class="form-element-block">
-      <label
-        ><input type="radio" name="breed-type" value="Pure" /> Pure Breed</label
-      >
-      <label
-        ><input type="radio" name="breed-type" value="Mixed" /> Mixed
+      <label for="breed-type-pure">
+        <input
+          type="radio"
+          id="breed-type-pure"
+          name="breed-type"
+          value="Pure"
+        />
+        Pure Breed
+      </label>
+      <label for="breed-type-mixed">
+        <input
+          type="radio"
+          id="breed-type-mixed"
+          name="breed-type"
+          value="Mixed"
+        />
+        Mixed
       </label>
     </div>
 
@@ -182,7 +206,6 @@
         name="vacc-date"
         class="input-field"
         required
-        name="vacc-date"
       />
     </div>
     <div class="form-element">

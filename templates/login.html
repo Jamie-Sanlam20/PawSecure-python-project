@@ -1,46 +1,91 @@
-{% extends "base.html" %} {% block content %}
-<div
-  class="container d-flex justify-content-center align-items-center min-vh-100"
->
-  <div
-    class="card shadow-lg p-5 border-0 rounded-4"
-    style="max-width: 450px; width: 100%"
-  >
-    <h2 class="text-center mb-4 text-dark fw-bold">
-      Welcome to PawSecure Tracker
-    </h2>
-    <form action="{{url_for('auth_bp.submit_login_page')}}" method="POST">
-      <div class="mb-3">
-        <label for="email" class="form-label fw-semibold">Email</label>
-        <input
-          type="email"
-          id="email"
-          class="form-control form-control-lg rounded-3 shadow-sm"
-          required
-          placeholder="Enter your email"
-          name="email_address"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label fw-semibold">Password</label>
-        <input
-          type="password"
-          id="password"
-          class="form-control form-control-lg rounded-3 shadow-sm"
-          required
-          placeholder="Enter your password"
-          name="password"
-        />
-      </div>
-      <div class="d-grid mt-4">
-        <button
-          class="btn btn-dark btn-lg rounded-3 shadow-sm fw-semibold"
-          type="submit"
-        >
-          Login
-        </button>
-      </div>
-    </form>
+{% extends "base.html" %} {% block head_content %}
+<style>
+  .pet {
+    width: 50vw;
+    height: 100vh;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 70%;
+  }
+
+  .full-page {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .pet-img {
+    flex: 1;
+    position: relative;
+  }
+
+  .container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .card {
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+</style>
+{% endblock %} {% block content %}
+<section class="full-page">
+  <!-- Pet image -->
+  <div class="pet-img">
+    <img
+      class="pet"
+      src="https://i.pinimg.com/originals/d9/9c/cc/d99ccc8f23fc4679dccdac71f4ed3ed2.jpg"
+      alt="Pet Image"
+    />
   </div>
-</div>
+
+  <!-- Login Form -->
+  <div class="container">
+    <div class="card">
+      <h4 class="text-center mb-4 text-dark fw-bold">
+        Welcome to PawSecure Tracker
+      </h4>
+      <form action="{{ url_for('auth_bp.submit_login_page') }}" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control form-control-lg rounded-3 shadow-sm"
+            required
+            placeholder="Enter your email"
+            name="email_address"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control form-control-lg rounded-3 shadow-sm"
+            required
+            placeholder="Enter your password"
+            name="password"
+          />
+        </div>
+        <div class="d-grid mt-4">
+          <button
+            class="btn btn-dark btn-lg rounded-3 shadow-sm fw-semibold"
+            type="submit"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}

@@ -50,4 +50,4 @@ def submit_login_page():
 @auth_bp.get("/logout")
 def logout_page():
     logout_user()
-    return redirect(url_for("auth_bp.submit_login_page"))
+    return redirect(url_for("auth_bp.login_page"))

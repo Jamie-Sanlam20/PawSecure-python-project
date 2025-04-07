@@ -16,7 +16,7 @@ def select_insurance(pet_id):
 
     insurance_plans = InsurancePlan.query.all()
     return render_template(
-        "quotes-incomplete.html",
+        "quotes-single.html",
         pet=pet,
         insurance_plans=insurance_plans,
         pet_id=pet_id,
