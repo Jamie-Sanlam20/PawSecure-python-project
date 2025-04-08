@@ -168,3 +168,13 @@ def partners_page():
 @main_bp.get("/contact")
 def contact_page():
     return render_template("contact-us.html")
+
+
+@main_bp.get("/agria")
+def agria_page():
+    return render_template("agria.html")
+
+
+@main_bp.get("/oneplan")
+def oneplan_page():
+    return render_template("oneplan.html")
