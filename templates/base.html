@@ -94,7 +94,9 @@
 
       <div class="nav-buttons">
         {% if current_user.is_authenticated %}
-        <p class="welcome-text">Welcome, {{ current_user.name }}!</p>
+        <p class="welcome-text">
+          <i class="fa-solid fa-paw"></i> Welcome, {{ current_user.name }}!
+        </p>
         <button onclick="window.location.href='/logout'">Logout</button>
         {% else %}
         <button onclick="window.location.href='/login'">Login</button>

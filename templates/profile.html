@@ -37,8 +37,12 @@
   }
 
   .content {
-    margin-left: 150px;
+    margin-left: 180px;
     padding: 30px;
+    /* display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column; */
   }
 
   .personal-info {
@@ -75,6 +79,11 @@
   .personal {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
+
+  .button {
+    text-align-last: center;
+    margin-bottom: 10px;
+  }
 </style>
 {% endblock %} {% block content %}
 <!-- Sidebar -->
@@ -90,7 +99,8 @@
 </div>
 
 <!-- Content -->
-<section class="content">
+<!-- <h2>Owner Profile</h2> -->
+<div class="content">
   <h2>Owner Profile</h2>
   <div class="card" style="width: 60rem">
     <img
@@ -125,11 +135,15 @@
           <p class="card-text">Email address</p>
           <p class="card-text">{{ owner.email_address }}</p>
         </div>
-        <a href="{{url_for('main_bp.profile_update')}}" class="btn btn-primary"
-          >Update</a
-        >
+        <div class="button">
+          <a
+            href="{{url_for('main_bp.profile_update')}}"
+            class="btn btn-primary"
+            ><i class="fa-solid fa-user-pen"></i> Update</a
+          >
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 {% endblock %}

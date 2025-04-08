@@ -99,8 +99,11 @@
 <div class="content">
   <div class="container">
     <div class="header">
-      <h2>Update Pet Info</h2>
+      <h2>Update Pet Information</h2>
     </div>
+    <div class="alert alert-primary" role="alert">
+  Please Note: Insurance plans cannot be updated; only the pet's information.
+</div>
     <form action="{{ url_for('main_bp.update_pet', pet_id=pet.pet_id) }}" method="POST" class="form-container">
       <div class="form-element">
         <label for="pet_name">Pet Name</label>
@@ -135,10 +138,10 @@
         <textarea id="medical_conditions" name="medical_conditions">{{ pet.medical_conditions }}</textarea>
       </div>
 
-      <div class="form-element">
+      <!-- <div class="form-element">
         <label for="insurance_name">Insurance Name</label>
         <input type="text" id="insurance_name" name="insurance_name" value="{{ pet.insurance_name }}" />
-      </div>
+      </div> -->
 
       <button type="submit">Update Pet</button>
     </form>
