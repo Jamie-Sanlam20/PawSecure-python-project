@@ -250,7 +250,6 @@ def update_pet(pet_id):
     return redirect(url_for("main_bp.dashboard"))
 
 
-<<<<<<< HEAD
 @main_bp.post("/delete-pet/<int:pet_id>")
 def delete_pet_by_id(pet_id):  # log
     # Auto converts data -> JSON (Flask)
@@ -267,7 +266,8 @@ def delete_pet_by_id(pet_id):  # log
     except Exception as e:
         db.session.rollback()  # Undo: Restore the data | After commit cannot undo
         return {"message": str(e)}, 404
-=======
+
+
 @main_bp.get("/agria")
 def agria_page():
     return render_template("agria.html")
@@ -276,4 +276,3 @@ def agria_page():
 @main_bp.get("/oneplan")
 def oneplan_page():
     return render_template("oneplan.html")
->>>>>>> e5f105c44f9395dd9c121ae106cb24d9c726a2c9
