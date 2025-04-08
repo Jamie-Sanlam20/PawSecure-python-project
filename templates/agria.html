@@ -1,131 +1,189 @@
-{% extends "base.html" %} {% block head_content %}
+{% extends "base.html" %} {% block content %}
 <style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+    background-color: #f9f9fb;
+  }
+
   .premium-section {
-    padding: 60px 20px;
+    padding: 100px 20px 60px;
+    background: linear-gradient(to bottom right, #ffffff, #eef5f7);
+  }
+
+  .agria-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .agria-picture {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.1));
+  }
+
+  .premium-container {
+    max-width: 1200px;
+    margin: 0 auto;
     text-align: center;
-    background-color: #ffffff;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
   }
 
   .section-title {
     font-size: 2.5rem;
-    color: #002855;
-    margin-bottom: 10px;
-    font-family: "Georgia", serif;
+    font-weight: 800;
+    color: #1a2340;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-transform: uppercase;
   }
 
   .section-subtitle {
     font-size: 1.1rem;
-    color: #333;
-    max-width: 700px;
-    margin: 0 auto 40px auto;
-    line-height: 1.6;
+    color: #444;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
   }
 
   .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
   }
 
   .info-card {
     background: #fff;
-    border: 1px solid #cfcfcf;
-    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 15px;
     padding: 30px 20px;
-    width: 250px;
+    width: 260px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
   }
 
   .info-card img {
     width: 60px;
     height: 60px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 
   .info-card h3 {
     font-size: 1.1rem;
-    color: #002855;
+    color: #1a2340;
     margin-bottom: 10px;
+    font-weight: 600;
   }
 
   .info-card p {
-    color: #333;
+    color: #444;
     font-size: 0.95rem;
   }
 
   .quote-btn-wrapper {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 
   .quote-btn {
-    background-color: #002855;
+    background-color: #1a2340;
     color: white;
-    padding: 15px 30px;
-    border-radius: 8px;
+    padding: 14px 28px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
     transition: background 0.3s ease;
+    display: inline-block;
   }
 
   .quote-btn:hover {
-    background-color: #146d14;
+    background-color: #28bcbf;
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .card-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .info-card {
+      width: 90%;
+    }
   }
 </style>
 
-{% endblock %} {% block content %}
 <section class="premium-section">
-  <h2 class="section-title">Proud to be premium</h2>
-  <p class="section-subtitle">
-    Since 1890 we have helped millions of pets live long and healthy lives
-    giving owners peace of mind and leaving a legacy of love.
-  </p>
-
-  <div class="card-container">
-    <div class="info-card">
-      <img
-        src="https://png.pngtree.com/png-vector/20230124/ourmid/pngtree-pet-care-logo-png-image_6571337.png"
-        alt="Vet Icon"
-      />
-      <h3>Up to £20,000 towards vet bills every year</h3>
-      <p>So your pet can get the care they need.</p>
-    </div>
-
-    <div class="info-card">
-      <img
-        src="https://png.pngtree.com/png-clipart/20231015/original/pngtree-d-rendering-of-isolated-gold-number-98-on-white-background-with-png-image_13304833.png"
-        alt="Claims Icon"
-      />
-      <h3>We pay 98% of claims*</h3>
-      <p>And we can pay your vet directly, so you can focus on your pet.</p>
-    </div>
-
-    <div class="info-card">
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/017/197/511/non_2x/money-bag-icon-transparent-background-free-png.png"
-        alt="Premium Icon"
-      />
-      <h3>No increase in your premiums when you claim</h3>
-      <p>
-        So you don’t have to worry about the cost of insurance when you go to
-        the vet.
-      </p>
-    </div>
-
-    <div class="info-card">
-      <img
-        src="https://static.vecteezy.com/system/resources/thumbnails/021/155/507/small_2x/a-blank-phone-mockup-no-background-free-png.png"
-        alt="Video Call Icon"
-      />
-      <h3>Free vet video calls, 24/7</h3>
-      <p>Which means help is always on hand if you’re worried.</p>
-    </div>
+  <div class="agria-logo-container">
+    <img
+      class="agria-picture"
+      src="https://adch.org.uk/wp-content/uploads/2024/01/Agria_Logo_ENG_CMYK.jpeg"
+      alt="Agria pic"
+    />
   </div>
 
-  <div class="quote-btn-wrapper">
-    <a href="#" class="quote-btn">Get a quote ⟶</a>
+  <div class="premium-container">
+    <h2 class="section-title">Proud to be premium</h2>
+    <p class="section-subtitle">
+      Since 1890 we have helped millions of pets live long and healthy lives,
+      giving owners peace of mind and leaving a legacy of love.
+    </p>
+
+    <div class="card-container">
+      <div class="info-card">
+        <img
+          src="https://png.pngtree.com/png-vector/20230124/ourmid/pngtree-pet-care-logo-png-image_6571337.png"
+          alt="Vet Icon"
+        />
+        <h3>Up to £20,000 towards vet bills every year</h3>
+        <p>So your pet can get the care they need.</p>
+      </div>
+
+      <div class="info-card">
+        <img
+          src="https://png.pngtree.com/png-clipart/20231015/original/pngtree-d-rendering-of-isolated-gold-number-98-on-white-background-with-png-image_13304833.png"
+          alt="Claims Icon"
+        />
+        <h3>We pay 98% of claims*</h3>
+        <p>And we can pay your vet directly, so you can focus on your pet.</p>
+      </div>
+
+      <div class="info-card">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/017/197/511/non_2x/money-bag-icon-transparent-background-free-png.png"
+          alt="Premium Icon"
+        />
+        <h3>No increase in premiums when you claim</h3>
+        <p>So you don’t have to worry about costs when you visit the vet.</p>
+      </div>
+
+      <div class="info-card">
+        <img
+          src="https://static.vecteezy.com/system/resources/thumbnails/021/155/507/small_2x/a-blank-phone-mockup-no-background-free-png.png"
+          alt="Video Call Icon"
+        />
+        <h3>Free vet video calls, 24/7</h3>
+        <p>Which means help is always on hand if you’re worried.</p>
+      </div>
+    </div>
+
+    <div class="quote-btn-wrapper">
+      <a href="#" class="quote-btn">Get a quote ⟶</a>
+    </div>
   </div>
 </section>
 {% endblock %}
