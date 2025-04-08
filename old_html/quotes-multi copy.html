@@ -1,0 +1,186 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #343a40;
+    margin-bottom: 40px;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 280px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Logo Styling */
+  .logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .logo-container img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .premium-title {
+    color: rgb(87, 74, 0);
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: left;
+    justify-content: center;
+  }
+
+  .feature .icon {
+    font-size: 18px;
+    margin-right: 8px;
+    color: green;
+  }
+
+  .card-footer {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .price {
+    font-size: 26px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 15px;
+  }
+
+  .purchase-btn {
+    background-color: green;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .purchase-btn:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      width: 90%;
+    }
+  }
+
+  .insurance-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .insuring-message {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: darkgreen;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+</style>
+{% endblock %} {% block content %}
+<h2>
+  We’ve found <strong>{{ total_deals }}</strong> great deals for your pets!
+</h2>
+
+<div class="container">
+  {% for pet in pets %}
+  <p class="insuring-message">
+    Insuring pet {{ loop.index }} of {{ pets|length }} ({{ pet.pet_name }})
+  </p>
+
+  {% for plan in insurance_plans %}
+  <div class="card">
+    <div class="logo-container">
+      <img
+        src="{{ plan.insurance_logo }}"
+        alt="{{ plan.insurance_name }} Logo"
+      />
+    </div>
+
+    <div class="premium-title">{{ plan.insurance_name }}</div>
+
+    {% for feature in plan.features.split(',') %}
+    <div class="feature"><span class="icon">✔</span> {{ feature.strip() }}</div>
+    {% endfor %}
+
+    <div class="card-footer">
+      <div class="price">R{{ plan.price_per_month }} pm</div>
+
+      <!-- Form for each pet and insurance plan -->
+      <form
+        action="{{ url_for('quotes_bp.link_insurance_plan', pet_id=pet.pet_id) }}"
+        method="POST"
+      >
+        <input type="hidden" name="pet_id" value="{{ pet.pet_id }}" />
+        <input
+          type="hidden"
+          name="insurance_plan_id"
+          value="{{ plan.insurance_id }}"
+        />
+        <button type="submit" class="purchase-btn">Purchase</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %} {% endfor %}
+</div>
+{% endblock %}

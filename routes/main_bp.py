@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from flask_login import current_user, login_required
 
 from extensions import db
@@ -160,6 +160,42 @@ def profile():
     return render_template("profile.html", owner=current_user)
 
 
+@main_bp.get("/profile-update")
+@login_required
+def profile_update():
+    return render_template("profile-update.html", owner=current_user)
+
+
+@main_bp.post("/update-owner")
+@login_required
+def update_owner():
+    # Fetch the current logged-in owner's record
+    owner = Owner.query.get(current_user.owner_id)  # or use session["current_owner_id"]
+
+    if not owner:
+        flash("Owner not found.", "danger")
+        return redirect(url_for("main_bp.profile"))
+
+    # Update fields from the form
+    owner.name = request.form.get("owner_name")
+    owner.surname = request.form.get("owner_surname")
+    owner.date_of_birth = request.form.get("owner_date_of_birth")
+    owner.contact_number = request.form.get("owner_contact_number")
+    owner.physical_address = request.form.get("owner_physical_address")
+    owner.email_address = request.form.get("owner_email_address")
+
+    # Commit changes
+    try:
+        db.session.commit()
+        flash("Profile updated successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash("Failed to update profile. Please try again.", "danger")
+        print("Update error:", e)
+
+    return redirect(url_for("main_bp.profile"))
+
+
 @main_bp.get("/partners-page")
 def partners_page():
     return render_template("partners-page.html")
@@ -168,6 +204,50 @@ def partners_page():
 @main_bp.get("/contact")
 def contact_page():
     return render_template("contact-us.html")
+
+
+@main_bp.get("/pet-update/<int:pet_id>")
+@login_required
+def pet_update(pet_id):
+    pet = Pet.query.get_or_404(pet_id)
+
+    # Ensure the pet belongs to the logged-in owner
+    if pet.owner_id != current_user.owner_id:
+        flash("Unauthorized access to pet record.", "danger")
+        return redirect(url_for("main_bp.profile"))
+
+    return render_template("update-pet.html", pet=pet)
+
+
+@main_bp.post("/update-pet/<int:pet_id>")
+@login_required
+def update_pet(pet_id):
+    pet = Pet.query.get_or_404(pet_id)
+
+    # Ensure the pet belongs to the logged-in owner
+    if pet.owner_id != current_user.owner_id:
+        flash("Unauthorized action.", "danger")
+        return redirect(url_for("main_bp.profile"))
+
+    # Update fields from form
+    pet.pet_name = request.form.get("pet_name")
+    pet.pet_age = request.form.get("pet_age")
+    pet.breed = request.form.get("breed")
+    pet.pet_gender = request.form.get("pet_gender")
+    pet.vacc_date = request.form.get("vacc_date")
+    pet.medical_conditions = request.form.get("medical_conditions")
+    pet.insurance_name = request.form.get("insurance_name")
+
+    # Commit changes
+    try:
+        db.session.commit()
+        flash("Pet info updated successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash("Failed to update pet info. Please try again.", "danger")
+        print("Pet update error:", e)
+
+    return redirect(url_for("main_bp.dashboard"))
 
 
 @main_bp.get("/agria")

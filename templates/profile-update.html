@@ -1,0 +1,181 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+  }
+
+  .sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+
+  .side-nav {
+    margin-top: 40px;
+  }
+
+  .content {
+    margin-left: 150px;
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+    flex-grow: 1;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    margin-bottom: 15px;
+  }
+
+  .personal-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .label {
+    font-weight: bold;
+    width: 150px;
+    text-align: left;
+  }
+
+  .value {
+    text-align: left;
+  }
+
+  .form-element {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+
+  .form-element label {
+    width: 150px;
+    font-weight: bold;
+  }
+
+  .form-element input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+  }
+</style>
+{% endblock %} {% block content %}
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+  <a href="/claim-tracker"
+    ><i class="fa-solid fa-clipboard-check"></i> Claim Tracker</a
+  >
+  <a href="/claim-form"
+    ><i class="fa-solid fa-file-circle-plus"></i> Submit Claim</a
+  >
+  <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="container">
+    <div class="header">
+      <h2>Owner Profile</h2>
+    </div>
+    <form
+      action="{{ url_for('main_bp.update_owner') }}"
+      method="POST"
+      class="form-container"
+    >
+      <div class="form-element">
+        <label for="owner-name">Owner's Name</label>
+        <input
+          type="text"
+          id="owner-name"
+          name="owner_name"
+          value="{{ owner.name }}"
+        />
+      </div>
+
+      <div class="form-element">
+        <label for="owner-surname">Owner's Surname</label>
+        <input
+          type="text"
+          id="owner-surname"
+          name="owner_surname"
+          class="input-field"
+          value="{{ owner.surname }}"
+        />
+      </div>
+
+      <div class="form-element">
+        <label for="owner-date-of-birth">Date of Birth</label>
+        <input
+          type="date"
+          id="owner-date-of-birth"
+          name="owner_date_of_birth"
+          class="input-field"
+          value="{{ owner.date_of_birth }}"
+        />
+      </div>
+
+      <div class="form-element">
+        <label for="owner-contact-number">Contact Number</label>
+        <input
+          type="tel"
+          id="owner-contact-number"
+          name="owner_contact_number"
+          class="input-field"
+          value="{{ owner.contact_number }}"
+        />
+      </div>
+
+      <div class="form-element">
+        <label for="owner-physical-address">Physical Address</label>
+        <input
+          type="text"
+          id="owner-physical-address"
+          name="owner_physical_address"
+          class="input-field"
+          value="{{ owner.physical_address }}"
+        />
+      </div>
+
+      <div class="form-element">
+        <label for="owner-email-address">Email Address</label>
+        <input
+          type="email"
+          id="owner-email-address"
+          name="owner_email_address"
+          class="input-field"
+          value="{{ owner.email_address }}"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-30">Update</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
