@@ -7,7 +7,7 @@ load_dotenv()
 # print(environ)
 
 
-class Config:
+class Configuration:
     # General pattern
     # mssql+pyodbc://<username>:<password>@<dsn_name>?driver=<driver_name>
     # mssql+pyodbc://@<server_name>/<db_name>?driver=<driver_name>
