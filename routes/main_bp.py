@@ -236,7 +236,7 @@ def update_pet(pet_id):
     pet.pet_gender = request.form.get("pet_gender")
     pet.vacc_date = request.form.get("vacc_date")
     pet.medical_conditions = request.form.get("medical_conditions")
-    pet.insurance_name = request.form.get("insurance_name")
+    # pet.insurance_name = request.form.get("insurance_name")
 
     # Commit changes
     try:
@@ -248,6 +248,24 @@ def update_pet(pet_id):
         print("Pet update error:", e)
 
     return redirect(url_for("main_bp.dashboard"))
+
+
+@main_bp.post("/delete-pet/<int:pet_id>")
+def delete_pet_by_id(pet_id):  # log
+    # Auto converts data -> JSON (Flask)
+    pet = Pet.query.get(pet_id)  # None if no movie
+
+    if not pet:
+        return {"message": "Pet not found"}, 404
+
+    try:
+        data = pet.to_dict()
+        db.session.delete(pet)  # Error
+        db.session.commit()  # Making the change (Update/Delete/Create) # Error
+        return redirect(url_for("main_bp.dashboard"))
+    except Exception as e:
+        db.session.rollback()  # Undo: Restore the data | After commit cannot undo
+        return {"message": str(e)}, 404
 
 
 @main_bp.get("/agria")

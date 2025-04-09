@@ -23,10 +23,11 @@
 
   /* Main content area */
   .content {
-    margin-left: 200px; /* Create space for the sidebar */
+    margin-left: 150px; /* Create space for the sidebar */
     padding: 30px;
     transition: margin-left 0.3s ease;
     margin-top: 0px;
+    padding-top: 10px;
   }
 
   .sidebar a {
@@ -101,10 +102,6 @@
       position: absolute;
     }
 
-    .content {
-      margin-left: 0;
-    }
-
     .sidebar a {
       font-size: 16px;
     }
@@ -138,6 +135,16 @@
   background-color: #0056b3;
 }
 
+.add-pet-btn {
+  text-align-last: end;
+  margin-bottom: 30px;
+}
+
+.btn-danger {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-weight: bold;
+}
 </style>
 {% endblock %} {% block content %}
 <!-- Sidebar -->
@@ -155,6 +162,11 @@
 </div>
 
 <section class="content">
+  <div class="add-pet-btn">
+    <a href="{{ url_for('pet_input_bp.add_pet', owner_id = current_user.owner_id)}}" class="btn btn-primary">
+      <i class="fa-solid fa-plus"></i> Add Pet
+    </a>
+  </div>
   <div class="full-page">
     {% for pet in pets %}
     <div class="card">
@@ -178,17 +190,17 @@
             <h5 class="card-title">Health</h5>
             <div class="card-text">
               <div class="health-box">
-                <p class="health-info">Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
+                <p class="health-info"><i class="fa-solid fa-syringe"></i> Next Vaccination Date </p><p>{{pet.vacc_date}}</p>
               </div>
               <div class="health-box">
                 <p class="health-info">
-                  Underlying Conditions </p><p>{{pet.medical_conditions if
+                  <i class="fa-solid fa-notes-medical"></i> Underlying Conditions </p><p>{{pet.medical_conditions if
                   pet.medical_conditions else 'None'}}
                 </p>
               </div>
               <div class="health-box">
                 <p class="health-info">
-                  Insurance Plan</p>
+                  <i class="fa-solid fa-shield-dog"></i> Insurance Plan</p>
                   <img class="insurance-logo" src="{{ pet.insurance_logo }}" />{{
                   pet.insurance_name or 'No Insurance' }}
                 </p>
@@ -201,40 +213,21 @@
   <a href="{{ url_for('main_bp.pet_update', pet_id=pet.pet_id) }}" class="btn btn-primary">
     <i class="fa-solid fa-pen-to-square"></i> Update Pet
   </a>
+  <form
+      action="{{url_for('main_bp.delete_pet_by_id', pet_id=pet.pet_id)}}"
+      method="POST"
+      class="form-container"
+    >
+      <button type="submit" class="btn btn-danger">
+        <i class="fa-solid fa-trash"></i> Delete Pet
+      </button>
+    </form>
 </div>
 
 
     </div>
     {% endfor %}
-    <!-- Card 2
-    <div class="card">
-      <img
-        src="https://th.bing.com/th/id/OIP.381r-P9kvfxzZ5xWgZ8XvgHaFj?rs=1&pid=ImgDetMain"
-        class="card-img-top"
-        alt="Pet Image"
-      />
-      <div class="card-body">
-        <h5 class="card-title">Kane</h5>
-        <p class="card-text">Dog</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Age: 7</li>
-        <li class="list-group-item">Breed: Pitbull Terrier</li>
-        <li class="list-group-item">Gender: Male</li>
-      </ul>
-      <div class="pet-health">
-        <div class="card" style="width: 100%">
-          <div class="card-body">
-            <h5 class="card-title">Health</h5>
-            <div class="card-text">
-              <p class="important">Next Vaccination Date: 12 June 2025</p>
-              <p>Underlying Conditions: None</p>
-              <p>Insurance Plan: OnePlan Premium</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+
   </div>
 </section>
 {% endblock %}
