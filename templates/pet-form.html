@@ -156,7 +156,7 @@
           name="pet-gender"
           value="Male"
         />
-        Male
+        <i class="fa-solid fa-mars"></i> Male
       </label>
       <label for="pet-gender-female">
         <input
@@ -165,6 +165,7 @@
           name="pet-gender"
           value="Female"
         />
+        <i class="fa-solid fa-venus"></i>
         Female
       </label>
     </div>
@@ -194,12 +195,26 @@
     <div class="form-element">
       <label for="breed">Main Breed</label>
       <select id="breed" name="pet-breed">
-        <option value="Pitbull Terrier">Pitbull Terrier</option>
-        <option value="Jack Russell Terrier">Jack Russell Terrier</option>
-        <option value="Staffordshire Terrier">Staffordshire Terrier</option>
-        <option value="Boston Terrier">Boston Terrier</option>
+        <optgroup label="Dog Breeds">
+          <option value="Pitbull Terrier">Pitbull Terrier</option>
+          <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+          <option value="Staffordshire Terrier">Staffordshire Terrier</option>
+          <option value="Boston Terrier">Boston Terrier</option>
+          <option value="Labrador">Labrador</option>
+          <option value="German Shepard">German Shepard</option>
+        </optgroup>
+
+        <optgroup label="Cat Breeds">
+          <option value="Siamese">Siamese</option>
+          <option value="Persian">Persian</option>
+          <option value="Sphynx">Sphynx</option>
+          <option value="Siberian">Siberian</option>
+          <option value="Russian Blue">Russian Blue</option>
+          <option value="Bombay">Bombay</option>
+        </optgroup>
       </select>
     </div>
+
     <div class="form-element">
       <label for="vacc-date">Next Vaccination Date</label>
       <input

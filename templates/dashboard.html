@@ -145,6 +145,12 @@
   margin-top: 20px;
   font-weight: bold;
 }
+
+.card-img-top {
+  width: 200px;
+  align-self: center;
+}
+
 </style>
 {% endblock %} {% block content %}
 <!-- Sidebar -->
@@ -170,14 +176,23 @@
   <div class="full-page">
     {% for pet in pets %}
     <div class="card">
+      {% if pet.pet_type == 'Dog' %}
       <img
-        src="https://th.bing.com/th/id/OIP.381r-P9kvfxzZ5xWgZ8XvgHaFj?rs=1&pid=ImgDetMain"
+        src="https://cdn3.iconfinder.com/data/icons/line/36/dog_head-1024.png"
         class="card-img-top"
         alt="Pet Image"
       />
+      {% else %}
+      <img
+        src="https://cdn1.iconfinder.com/data/icons/cat-supplies-line/64/cat-01-1024.png"
+        class="card-img-top"
+        alt="Pet Image"
+      />
+      {% endif %}
+
       <div class="card-body">
         <h5 class="card-title">{{ pet.pet_name }}</h5>
-        <p class="card-text">Dog</p>
+        <p class="card-text">{{ pet.pet_type }}</p>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{ pet.pet_age }} years old</li>
@@ -201,7 +216,7 @@
               <div class="health-box">
                 <p class="health-info">
                   <i class="fa-solid fa-shield-dog"></i> Insurance Plan</p>
-                  <img class="insurance-logo" src="{{ pet.insurance_logo }}" />{{
+                  <img class="insurance-logo" src="{{ pet.insurance_logo }}" /> {{
                   pet.insurance_name or 'No Insurance' }}
                 </p>
               </div>

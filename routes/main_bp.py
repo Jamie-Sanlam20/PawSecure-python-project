@@ -28,11 +28,11 @@ def add_owner():
 def create_owner():
     try:
         data = {
-            "name": request.form.get("owner_name"),
-            "surname": request.form.get("owner_surname"),
+            "name": request.form.get("owner_name").title(),  # type: ignore
+            "surname": request.form.get("owner_surname").title(),
             "date_of_birth": request.form.get("owner_date_of_birth"),
             "contact_number": request.form.get("owner_contact_number"),
-            "physical_address": request.form.get("owner_physical_address"),
+            "physical_address": request.form.get("owner_physical_address").title(),
             "email_address": request.form.get("owner_email_address"),
             "password": request.form.get("owner_password"),
         }
