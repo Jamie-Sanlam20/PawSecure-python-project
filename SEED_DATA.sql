@@ -1,26 +1,31 @@
+DROP TABLE pet_insurance;
+DROP TABLE insurance_plans;
+DROP TABLE claim;
+DROP TABLE pet;
+DROP TABLE owner;
+
 CREATE TABLE owner (
-    owner_id INT PRIMARY KEY IDENTITY(1,1),  -- Auto-incremented primary key
-    name VARCHAR(255) NOT NULL,               -- Owner's first name
-    surname VARCHAR(255) NOT NULL,            -- Owner's surname
-    date_of_birth DATE NOT NULL,              -- Owner's date of birth
-    contact_number VARCHAR(15) NOT NULL,      -- Owner's contact number
-    physical_address VARCHAR(255) NOT NULL,   -- Owner's physical address
-    email_address VARCHAR(255) NOT NULL UNIQUE,  -- Owner's email address, must be unique
-    password VARCHAR(255) NOT NULL            -- Owner's password (hashed ideally)
+    owner_id INT PRIMARY KEY IDENTITY(1,1),
+    name VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    contact_number VARCHAR(15) NOT NULL,
+    physical_address VARCHAR(255) NOT NULL,
+    email_address VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
 );
 
-INSERT INTO owner (name, surname, date_of_birth, contact_number, physical_address, email_address, password)
-VALUES
-('Emma', 'Johnson', '1990-03-12', '0834567890', '123 Rose Street, Cape Town', 'emma.johnson@email.com', 'hashed_pw1'),
-('Liam', 'Smith', '1985-07-22', '0741234567', '45 Daisy Ave, Johannesburg', 'liam.smith@email.com', 'hashed_pw2'),
-('Olivia', 'Brown', '1992-11-03', '0822345678', '78 Sunset Blvd, Durban', 'olivia.brown@email.com', 'hashed_pw3'),
-('Noah', 'Williams', '1988-01-18', '0769876543', '10 Ocean View Rd, Port Elizabeth', 'noah.williams@email.com', 'hashed_pw4'),
-('Ava', 'Jones', '1995-09-30', '0731230987', '15 Sandton Drive, Johannesburg', 'ava.jones@email.com', 'hashed_pw5'),
-('Lucas', 'Miller', '1991-05-11', '0847654321', '33 Flamingo Way, Pretoria', 'lucas.miller@email.com', 'hashed_pw6'),
-('Sophia', 'Davis', '1987-02-27', '0719876543', '89 Main Rd, Stellenbosch', 'sophia.davis@email.com', 'hashed_pw7'),
-('Mason', 'Garcia', '1993-10-05', '0828765432', '22 Pine Street, Bloemfontein', 'mason.garcia@email.com', 'hashed_pw8'),
-('Isabella', 'Martinez', '1996-12-21', '0832345678', '99 Tulip Lane, East London', 'isabella.martinez@email.com', 'hashed_pw9'),
-('Ethan', 'Rodriguez', '1989-06-14', '0723456789', '67 Cedar Crescent, George', 'ethan.rodriguez@email.com', 'hashed_pw10');
+INSERT INTO owner (name, surname, date_of_birth, contact_number, physical_address, email_address, password) VALUES
+('Jamie', 'Isaacs', '1994-05-12', '0712345678', '12 Birchwood Avenue', 'jamie@gmail.com', 'scrypt:32768:8:1$Uh2PBBJr1lJ6a47U$2810ffd20965ab3ec44c38cc0760f6c45f8e1e8e933c6bf876b7012b7ddfd6a39361531f3dddcda86615ee8a9d54bf2f380b1e0f72a3a2c3139116d1bb23f267'),
+('Taylor', 'Morgan', '1989-11-03', '0723456789', '24 Acorn Street', 'taylor@gmail.com', 'scrypt:32768:8:1$JdLkU2B9tGa92Z1Y$57009000c34d83a89d35a92bf8e1b833174edaf2389ef933336937ed567539ba887dade4db83d705312b9c03a0a0f15b85b032d088c6dd26aac1ddfd4d651a45'),
+('Avery', 'Smith', '1992-08-21', '0734567890', '78 Oakridge Crescent', 'avery@gmail.com', 'scrypt:32768:8:1$JdLkU2B9tGa92Z1Y$57009000c34d83a89d35a92bf8e1b833174edaf2389ef933336937ed567539ba887dade4db83d705312b9c03a0a0f15b85b032d088c6dd26aac1ddfd4d651a45'),
+('Jordan', 'Lee', '1987-01-15', '0745678901', '50 Meadow Lane', 'jordan@gmail.com', 'scrypt:32768:8:1$Uh2PBBJr1lJ6a47U$2810ffd20965ab3ec44c38cc0760f6c45f8e1e8e933c6bf876b7012b7ddfd6a39361531f3dddcda86615ee8a9d54bf2f380b1e0f72a3a2c3139116d1bb23f267'),
+('Casey', 'Reed', '1995-12-05', '0756789012', '91 Sunset Boulevard', 'casey@yahoo.com', 'scrypt:32768:8:1$Uh2PBBJr1lJ6a47U$2810ffd20965ab3ec44c38cc0760f6c45f8e1e8e933c6bf876b7012b7ddfd6a39361531f3dddcda86615ee8a9d54bf2f380b1e0f72a3a2c3139116d1bb23f267'),
+('Morgan', 'Parker', '1991-04-18', '0767890123', '66 Willow Way', 'morgan@mail.com', 'scrypt:32768:8:1$JdLkU2B9tGa92Z1Y$57009000c34d83a89d35a92bf8e1b833174edaf2389ef933336937ed567539ba887dade4db83d705312b9c03a0a0f15b85b032d088c6dd26aac1ddfd4d651a45'),
+('Skylar', 'Bennett', '1990-09-29', '0778901234', '17 Elmwood Drive', 'skylar@gmail.com', 'scrypt:32768:8:1$JdLkU2B9tGa92Z1Y$57009000c34d83a89d35a92bf8e1b833174edaf2389ef933336937ed567539ba887dade4db83d705312b9c03a0a0f15b85b032d088c6dd26aac1ddfd4d651a45'),
+('Alex', 'Hunter', '1988-06-14', '0789012345', '3 Riverbend Road', 'alex@mail.com', 'scrypt:32768:8:1$Uh2PBBJr1lJ6a47U$2810ffd20965ab3ec44c38cc0760f6c45f8e1e8e933c6bf876b7012b7ddfd6a39361531f3dddcda86615ee8a9d54bf2f380b1e0f72a3a2c3139116d1bb23f267'),
+('Reese', 'Quinn', '1993-10-08', '0790123456', '88 Maple Grove', 'reese@yahoo.com', 'scrypt:32768:8:1$Uh2PBBJr1lJ6a47U$2810ffd20965ab3ec44c38cc0760f6c45f8e1e8e933c6bf876b7012b7ddfd6a39361531f3dddcda86615ee8a9d54bf2f380b1e0f72a3a2c3139116d1bb23f267'),
+('Drew', 'Taylor', '1996-02-26', '0801234567', '29 Cedar Point', 'drew@mail.com', 'scrypt:32768:8:1$Uh2PBBJr1lJ6a47U$2810ffd20965ab3ec44c38cc0760f6c45f8e1e8e933c6bf876b7012b7ddfd6a39361531f3dddcda86615ee8a9d54bf2f380b1e0f72a3a2c3139116d1bb23f267');
 
 CREATE TABLE pet (
     pet_id INT PRIMARY KEY IDENTITY(1,1),
@@ -52,7 +57,7 @@ VALUES
 
 
 CREATE TABLE insurance_plans (
-    insurance_id INT PRIMARY KEY IDENTITY(1,1),  -- Auto-increment for insurance_id
+    insurance_id INT PRIMARY KEY IDENTITY(1,1),
     insurance_name VARCHAR(50) NOT NULL,
     price_per_month DECIMAL(10, 2) NOT NULL,
     features TEXT NOT NULL,
