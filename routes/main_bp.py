@@ -28,11 +28,11 @@ def add_owner():
 def create_owner():
     try:
         data = {
-            "name": request.form.get("owner_name"),
-            "surname": request.form.get("owner_surname"),
+            "name": request.form.get("owner_name").title(),  # type: ignore
+            "surname": request.form.get("owner_surname").title(),
             "date_of_birth": request.form.get("owner_date_of_birth"),
             "contact_number": request.form.get("owner_contact_number"),
-            "physical_address": request.form.get("owner_physical_address"),
+            "physical_address": request.form.get("owner_physical_address").title(),
             "email_address": request.form.get("owner_email_address"),
             "password": request.form.get("owner_password"),
         }
@@ -201,11 +201,6 @@ def partners_page():
     return render_template("partners-page.html")
 
 
-@main_bp.get("/contact")
-def contact_page():
-    return render_template("contact-us.html")
-
-
 @main_bp.get("/pet-update/<int:pet_id>")
 @login_required
 def pet_update(pet_id):
@@ -276,3 +271,21 @@ def agria_page():
 @main_bp.get("/oneplan")
 def oneplan_page():
     return render_template("oneplan.html")
+
+
+@main_bp.get("/contact")
+def contact_page():
+    return render_template("contact-us.html")
+
+
+@main_bp.post("/contact")
+def contact_submit():
+    f_name = request.form.get("first-name")
+    l_name = request.form.get("surname")
+    regarding = request.form.get("regarding")
+
+    flash(
+        f"Thank you for your message, {f_name} {l_name}. We'll get back to you as soon as possible regarding your {regarding}.",
+        "success",
+    )
+    return redirect(url_for("main_bp.contact_page"))
