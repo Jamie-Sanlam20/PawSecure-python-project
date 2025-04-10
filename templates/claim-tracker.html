@@ -102,6 +102,21 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>Juice</td>
+          <td>Vaccination</td>
+          <td>R600</td>
+          <td>2024-09-27</td>
+          <td><span class="badge bg-success">Accepted</span></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td>Lucy</td>
+          <td>Grooming</td>
+          <td>R2500</td>
+          <td>2025-01-28</td>
+          <td><span class="badge bg-danger">Declined</span></td>
+        </tr>
         {% for claim in claims %}
         <tr>
           <td>{{ claim.pet_name }}</td>
@@ -112,6 +127,7 @@
             <span class="badge bg-warning">{{ claim.claim_status }}</span>
           </td>
         </tr>
+
         {% endfor %}
         <!-- <tr>
           <td>Lola</td>

@@ -3,7 +3,6 @@ from flask_login import LoginManager
 from sqlalchemy.sql import text
 
 from config import Config
-from configurations import Configuration
 from extensions import db
 from models.owner import Owner
 from models.pet import Pet
