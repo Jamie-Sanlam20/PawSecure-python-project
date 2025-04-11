@@ -46,7 +46,7 @@ def create_owner():
         db.session.add(new_owner)
         db.session.commit()
 
-        # ✅ Clear previous session data to prevent old pet carryover
+        # Clear previous session data to prevent old pet carryover
         session["added_pet_ids"] = []
         session["insured_pet_ids"] = []
 
@@ -249,8 +249,8 @@ def delete_pet_by_id(pet_id):
 
     try:
         data = pet.to_dict()
-        db.session.delete(pet)  # Error
-        db.session.commit()  # Making the change (Delete) # Error
+        db.session.delete(pet)
+        db.session.commit()  # Making the change (Delete)
         return redirect(url_for("main_bp.dashboard"))
     except Exception as e:
         db.session.rollback()  # Undo: Restore the data | After commit cannot undo
