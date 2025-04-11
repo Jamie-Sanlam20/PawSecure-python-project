@@ -35,7 +35,7 @@ def create_pet():
                 "message": "Invalid or missing owner ID. Please log in or start with the owner form."
             }, 400
 
-        owner_id = int(owner_id)  # Now it's safe to use
+        owner_id = int(owner_id)
 
         # 3. Prepare pet data
         data = {

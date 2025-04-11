@@ -16,7 +16,6 @@ class Owner(UserMixin, db.Model):
     email_address = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
 
-    # Changed backref name to avoid conflict
     pets_list = db.relationship("Pet", backref="owner_relation", lazy=True)
 
     def __repr__(self):

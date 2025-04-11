@@ -43,7 +43,7 @@
     margin-left: 150px; /* Create space for the sidebar */
     padding: 30px;
     transition: margin-left 0.3s ease;
-    margin-top: 0px; /* Adjust for the height of the header */
+    margin-top: 0px;
     flex-grow: 1;
     padding-top: 15px;
   }
@@ -75,7 +75,6 @@
 {% endblock %} {% block content %}
 <!-- Sidebar -->
 <div class="sidebar">
-  <!-- <h3 class="text-center text-white">Navigation</h3> -->
   <a href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
   <a href="/claim-tracker"
     ><i class="fa-solid fa-clipboard-check"></i> Claim Tracker</a
@@ -102,21 +101,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Juice</td>
-          <td>Vaccination</td>
-          <td>R600</td>
-          <td>2024-09-27</td>
-          <td><span class="badge bg-success">Accepted</span></td>
-        </tr>
-        <tr></tr>
-        <tr>
-          <td>Lucy</td>
-          <td>Grooming</td>
-          <td>R2500</td>
-          <td>2025-01-28</td>
-          <td><span class="badge bg-danger">Declined</span></td>
-        </tr>
         {% for claim in claims %}
         <tr>
           <td>{{ claim.pet_name }}</td>
@@ -124,32 +108,19 @@
           <td>{{ claim.amount }}</td>
           <td>{{ claim.claim_date }}</td>
           <td>
+            {% if claim.claim_status == 'Approved' %}
+            <span class="badge bg-success">{{ claim.claim_status }}</span>
+            {% elif claim.claim_status == 'Declined' %}
+            <span class="badge bg-danger">{{ claim.claim_status }}</span>
+            {% elif claim.claim_status == 'Pending' %}
             <span class="badge bg-warning">{{ claim.claim_status }}</span>
+            {% else %}
+            <span class="badge bg-secondary">{{ claim.claim_status }}</span>
+            {% endif %}
           </td>
         </tr>
 
         {% endfor %}
-        <!-- <tr>
-          <td>Lola</td>
-          <td>Vaccination</td>
-          <td>R700</td>
-          <td>R700</td>
-          <td><span class="badge bg-success">Resolved</span></td>
-        </tr>
-        <tr>
-          <td>Kane</td>
-          <td>Nail Clipping</td>
-          <td>R400</td>
-          <td>R0</td>
-          <td><span class="badge bg-danger">Declined</span></td>
-        </tr>
-        <tr>
-          <td>Lola</td>
-          <td>Grooming</td>
-          <td>R600</td>
-          <td>R600</td>
-          <td><span class="badge bg-success">Resolved</span></td>
-        </tr> -->
       </tbody>
     </table>
     {% else %}

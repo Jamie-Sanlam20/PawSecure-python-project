@@ -11,6 +11,9 @@ class Pet(db.Model):
     owner = db.relationship("Owner", backref="pets", lazy=True)
     # Relationship to link pet with insurance via PetInsurance table
     pet_insurance = db.relationship("PetInsurance", backref="pet_ref", lazy=True)
+    claims = db.relationship(
+        "Claim", backref="pet", cascade="all, delete", passive_deletes=True
+    )
 
     pet_type = db.Column(db.String(10), nullable=False)
     pet_name = db.Column(db.String(255), nullable=False)
@@ -19,7 +22,6 @@ class Pet(db.Model):
     breed_type = db.Column(db.String(10), nullable=False)
     breed = db.Column(db.String(255), nullable=True)
     medical_conditions = db.Column(db.Text, nullable=True)
-    # New field
     vacc_date = db.Column(db.Date, nullable=True)
 
     def __repr__(self):

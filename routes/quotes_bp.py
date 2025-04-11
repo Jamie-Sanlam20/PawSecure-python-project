@@ -2,7 +2,7 @@ from flask import Blueprint, flash, redirect, render_template, request, session,
 
 from extensions import db
 from models.pet import Pet
-from models.quotes import InsurancePlan, PetInsurance  # Your renamed model
+from models.quotes import InsurancePlan, PetInsurance
 
 quotes_bp = Blueprint("quotes_bp", __name__)
 
@@ -23,6 +23,7 @@ def select_insurance(pet_id):
     )
 
 
+# Multiple pets:
 @quotes_bp.get("/multi-select-insurance")
 def multi_select_insurance():
     pet_ids = session.get("added_pet_ids", [])

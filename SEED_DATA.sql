@@ -105,9 +105,14 @@ CREATE TABLE claim (
     amount DECIMAL(10, 2) NOT NULL,
     claim_date DATE NOT NULL,
     claim_status VARCHAR(20) NOT NULL DEFAULT 'Pending',
-    FOREIGN KEY (pet_id) REFERENCES pet(pet_id)
+    CONSTRAINT FK_claim_pet FOREIGN KEY (pet_id)
+        REFERENCES pet(pet_id)
+        ON DELETE CASCADE
 );
 
+
+INSERT INTO claim (pet_id, reason, amount, claim_date, claim_status) VALUES (2, 'Emergency', 7000.00, '2025-02-15', 'Approved');
+INSERT INTO claim (pet_id, reason, amount, claim_date, claim_status) VALUES (1, 'Nail Clipping', 900.00, '2025-03-15', 'Declined');
 INSERT INTO claim (pet_id, reason, amount, claim_date, claim_status) VALUES (1, 'Vaccination', 450.00, '2025-03-15', 'Approved');
 INSERT INTO claim (pet_id, reason, amount, claim_date, claim_status) VALUES (2, 'Grooming', 3200.00, '2025-03-20', 'Pending');
 INSERT INTO claim (pet_id, reason, amount, claim_date, claim_status) VALUES (3, 'Nail Clipping', 780.50, '2025-02-28', 'Rejected');

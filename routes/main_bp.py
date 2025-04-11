@@ -9,8 +9,6 @@ from models.owner import Owner
 from models.pet import Pet
 from models.quotes import InsurancePlan, PetInsurance
 
-# 1. Organize
-# 2. app needs to be in main.py
 main_bp = Blueprint("main_bp", __name__)
 
 
@@ -52,7 +50,6 @@ def create_owner():
         session["added_pet_ids"] = []
         session["insured_pet_ids"] = []
 
-        # Optionally store owner ID if needed
         session["current_owner_id"] = new_owner.owner_id
 
         # Redirect to pet form, passing owner_id
@@ -86,7 +83,6 @@ def dashboard():
 @main_bp.get("/claim-form")
 @login_required
 def show_claim_form():
-    # owner_id = session.get("current_owner_id")
     pets = Pet.query.filter_by(owner_id=current_user.owner_id).all()
     return render_template("claim-form.html", pets=pets)
 
@@ -170,7 +166,7 @@ def profile_update():
 @login_required
 def update_owner():
     # Fetch the current logged-in owner's record
-    owner = Owner.query.get(current_user.owner_id)  # or use session["current_owner_id"]
+    owner = Owner.query.get(current_user.owner_id)
 
     if not owner:
         flash("Owner not found.", "danger")
@@ -231,7 +227,6 @@ def update_pet(pet_id):
     pet.pet_gender = request.form.get("pet_gender")
     pet.vacc_date = request.form.get("vacc_date")
     pet.medical_conditions = request.form.get("medical_conditions")
-    # pet.insurance_name = request.form.get("insurance_name")
 
     # Commit changes
     try:
@@ -246,9 +241,8 @@ def update_pet(pet_id):
 
 
 @main_bp.post("/delete-pet/<int:pet_id>")
-def delete_pet_by_id(pet_id):  # log
-    # Auto converts data -> JSON (Flask)
-    pet = Pet.query.get(pet_id)  # None if no movie
+def delete_pet_by_id(pet_id):
+    pet = Pet.query.get(pet_id)  # None if no pet
 
     if not pet:
         return {"message": "Pet not found"}, 404
@@ -256,7 +250,7 @@ def delete_pet_by_id(pet_id):  # log
     try:
         data = pet.to_dict()
         db.session.delete(pet)  # Error
-        db.session.commit()  # Making the change (Update/Delete/Create) # Error
+        db.session.commit()  # Making the change (Delete) # Error
         return redirect(url_for("main_bp.dashboard"))
     except Exception as e:
         db.session.rollback()  # Undo: Restore the data | After commit cannot undo

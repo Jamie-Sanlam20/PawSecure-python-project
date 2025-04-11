@@ -112,6 +112,7 @@
     font-weight: bold;
   }
 
+  /* Responsive Design */
   @media (max-width: 768px) {
     .container {
       flex-direction: column;
@@ -133,6 +134,7 @@
 {% endblock %} {% block content %}
 <h2>We’ve found <strong>{{ total_deals }}</strong> great deals for you!</h2>
 
+<!-- Checks if there's only 1 pet being insured -->
 {% if session.get('insured_pets', 0) < 1 %}
 <div class="insuring-message">
   Insuring {{ session.get('pet_name', 'your pet') }} ({{
